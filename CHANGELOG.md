@@ -9,6 +9,8 @@ All notable changes to this project are documented here.
 - Dedicated 2880x1800 Ventoy theme with a scrollable image library.
 - Unicode-capable menu font and class icons for common Ventoy image types.
 - Reproducible Ventoy package build and repository checks.
+- Resolution-aware Ventoy layouts for six common 16:10, 16:9, and 4:3 modes.
+- Shared high, medium, and low font tiers for cross-device readability.
 
 ## [0.1.0] - 2026-08-23
 

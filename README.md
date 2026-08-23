@@ -2,7 +2,7 @@
 
 一套面向高分辨率屏幕的 GRUB 2 TUI 主题。设计参考现代终端界面，使用单层轮廓、Nerd Font 图标和克制的状态色，同时保留 GRUB 原生菜单行为。
 
-仓库同时提供独立的 Ventoy 变体，用于高分辨率多启动和恢复 U 盘。两套主题共享视觉语言，但菜单容量、运行时状态和图标分类分别适配各自的引导器。
+仓库同时提供独立的 Ventoy 变体，用于跨设备多启动和恢复 U 盘。两套主题共享视觉语言，但菜单容量、运行时状态和图标分类分别适配各自的引导器。
 
 ![GRUB QEMU preview](assets/screenshots/qemu-2880x1800.png)
 
@@ -71,7 +71,9 @@ NERD_FONT_FILE=/path/to/JetBrainsMonoNerdFontMono-Regular.ttf make build
 
 ## Ventoy 变体
 
-Ventoy 源码位于 `ventoy/src/`，构建结果是可直接复制到 Ventoy 数据分区根目录的 `ventoy/dist/ventoy/`。该变体针对 `2880x1800` 设计，提供 10 行可滚动菜单、ISO/IMG/WIM/VHD 图标、Ventoy 运行时状态和中英文等宽字体。
+Ventoy 源码位于 `ventoy/src/`，构建结果是可直接复制到 Ventoy 数据分区根目录的 `ventoy/dist/ventoy/`。该变体以 `2880x1800` 为设计基准，构建 `2880x1800`、`2560x1600`、`1920x1200`、`1920x1080`、`1366x768` 和 `1024x768` 六个布局，并由 Ventoy 的 `resolution_fit` 自动选择。每个布局都提供 10 行可滚动菜单、ISO/IMG/WIM/VHD 图标和 Ventoy 运行时状态。
+
+六个布局共用高、中、低三档字体资源，以兼顾可读性和启动盘读取开销。目标分辨率维护在 `ventoy/src/profiles.txt`；布局坐标、菜单资源和图标尺寸由构建脚本从 `2880x1800` 基准按比例生成。
 
 ![Ventoy QEMU preview](ventoy/assets/screenshots/qemu-2880x1800.png)
 
@@ -88,7 +90,7 @@ make check-ventoy
 cp -R ventoy/dist/ventoy /path/to/ventoy-data-partition/
 ```
 
-主题只应放在保存 ISO 文件的第一个 Ventoy 数据分区。不要将主题或 `ventoy.json` 写入 32 MiB 的 `VTOYEFI` 分区。图形模式不兼容时可在 Ventoy 中按 `F7` 临时切换到文本模式。
+主题只应放在保存 ISO 文件的第一个 Ventoy 数据分区。不要将主题或 `ventoy.json` 写入 32 MiB 的 `VTOYEFI` 分区。Ventoy 会按固件实际采用的分辨率自动匹配目录名中的小写 `宽x高`；也可以在 `F5 Tools -> Theme Select` 中临时切换主题。图形模式不兼容时可按 `F7` 临时切换到文本模式。
 
 ## 预览
 

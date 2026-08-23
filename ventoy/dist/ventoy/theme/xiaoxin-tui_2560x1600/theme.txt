@@ -1,0 +1,122 @@
+# XIAOXIN TUI base theme for Ventoy 1.1+
+#
+# Coordinates use the 2880x1800 design grid. build-ventoy.sh scales this
+# template into each profile listed in profiles.txt.
+
+title-text: ""
+desktop-color: "#080a0f"
+desktop-image: "background.png"
+message-font: "JetBrains Mono Ventoy 24 Regular 24"
+message-color: "#d9e0ee"
+message-bg-color: "#080a0f"
+terminal-font: "JetBrains Mono Ventoy 24 Regular 24"
+terminal-border: "0"
+terminal-left: "0"
+terminal-top: "0"
+terminal-width: "100%"
+terminal-height: "100%"
+
++ boot_menu {
+  left = 126
+  top = 320
+  width = 1520
+  height = 818
+  item_font = "Noto Sans Mono CJK SC Menu 28 Regular 28"
+  item_color = "#d9e0ee"
+  selected_item_color = "#d9e0ee"
+  icon_width = 57
+  icon_height = 43
+  item_icon_space = 16
+  item_height = 82
+  item_padding = 0
+  item_spacing = 0
+  menu_pixmap_style = "menu_*.png"
+  selected_item_pixmap_style = "highlight_*.png"
+  scrollbar = true
+  scrollbar_width = 9
+  scrollbar_frame = "scrollbar_frame_*.png"
+  scrollbar_thumb = "scrollbar_thumb_*.png"
+  scrollbar_slice = "east"
+  scrollbar_left_pad = 12
+  scrollbar_top_pad = 7
+  scrollbar_bottom_pad = 7
+}
+
++ hbox {
+  left = 1764
+  top = 996
+  width = 660
+  height = 37
+  + label {
+    text = "@VTOY_MEM_DISK@"
+    color = "#e5c07b"
+    font = "JetBrains Mono Ventoy 24 Regular 24"
+    align = "left"
+  }
+}
+
++ hbox {
+  left = 1764
+  top = 1047
+  width = 660
+  height = 37
+  + label {
+    text = "@VTOY_ISO_RAW@"
+    color = "#e5c07b"
+    font = "JetBrains Mono Ventoy 24 Regular 24"
+    align = "left"
+  }
+}
+
++ hbox {
+  left = 1764
+  top = 1099
+  width = 660
+  height = 37
+  + label {
+    text = "@VTOY_GRUB2_MODE@"
+    color = "#c099ff"
+    font = "JetBrains Mono Ventoy 24 Regular 24"
+    align = "left"
+  }
+}
+
++ hbox {
+  left = 1764
+  top = 1150
+  width = 660
+  height = 37
+  + label {
+    text = "@VTOY_WIMBOOT_MODE@"
+    color = "#c099ff"
+    font = "JetBrains Mono Ventoy 24 Regular 24"
+    align = "left"
+  }
+}
+
++ hbox {
+  left = 126
+  top = 1318
+  width = 2299
+  height = 43
+  + label {
+    text = "@VTOY_HOTKEY_TIP@"
+    color = "#748096"
+    font = "JetBrains Mono Ventoy 24 Regular 24"
+    align = "center"
+  }
+}
+
++ progress_bar {
+  id = "__timeout__"
+  left = 1764
+  top = 1260
+  width = 660
+  height = 9
+  text = ""
+  text_color = "#8bd49c"
+  fg_color = "#8bd49c"
+  bg_color = "#1d2635"
+  border_color = "#1d2635"
+  font = "JetBrains Mono Ventoy 24 Regular 24"
+}

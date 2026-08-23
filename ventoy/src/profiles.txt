@@ -1,0 +1,7 @@
+# width height font-tier
+2880 1800 large
+2560 1600 large
+1920 1200 medium
+1920 1080 medium
+1366 768 small
+1024 768 small
