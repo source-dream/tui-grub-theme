@@ -1,0 +1,59 @@
+# REDMI TUI theme for GRUB 2
+
+title-text: ""
+desktop-color: "#080a0f"
+desktop-image: "background.png"
+message-font: "JetBrains Mono Body 25 Regular 25"
+message-color: "#d9e0ee"
+message-bg-color: "#080a0f"
+terminal-font: "JetBrains Mono Body 25 Regular 25"
+terminal-border: "0"
+terminal-left: "0"
+terminal-top: "0"
+terminal-width: "100%"
+terminal-height: "100%"
+
++ boot_menu {
+  left = 126
+  top = 329
+  width = 1509
+  height = 560
+  item_font = "JetBrains Mono Menu 33 Regular 33"
+  item_color = "#d9e0ee"
+  selected_item_color = "#d9e0ee"
+  icon_width = 135
+  icon_height = 46
+  item_icon_space = 23
+  item_height = 112
+  item_padding = 0
+  item_spacing = 0
+  selected_item_pixmap_style = "highlight_*.png"
+  scrollbar = false
+}
+
++ label {
+  id = "__timeout__"
+  left = 2187
+  top = 999
+  width = 238
+  height = 52
+  align = "right"
+  valign = "center"
+  text = "%d seconds"
+  color = "#8bd49c"
+  font = "JetBrains Mono Body 25 Regular 25"
+}
+
++ progress_bar {
+  id = "__timeout__"
+  left = 1720
+  top = 1071
+  width = 705
+  height = 12
+  text = ""
+  text_color = "#8bd49c"
+  fg_color = "#8bd49c"
+  bg_color = "#1d2635"
+  border_color = "#1d2635"
+  font = "JetBrains Mono Body 25 Regular 25"
+}
