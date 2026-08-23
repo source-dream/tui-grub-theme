@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2880" height="1800" viewBox="0 0 2880 1800">
+  <defs>
+    <pattern id="grid" width="56" height="56" patternUnits="userSpaceOnUse">
+      <path d="M56 0H0V56" fill="none" stroke="#242b38" stroke-width="1" opacity="0.12"/>
+    </pattern>
+    <style>
+      .mono { font-family: "JetBrainsMono Nerd Font Mono", "JetBrains Mono", monospace; letter-spacing: 0; }
+      .text { fill: #d9e0ee; }
+      .muted { fill: #748096; }
+      .dim { fill: #4d586b; }
+      .cyan { fill: #70c0e8; }
+      .green { fill: #8bd49c; }
+      .yellow { fill: #e5c07b; }
+      .purple { fill: #c099ff; }
+      .label { font-size: 25px; font-weight: 700; }
+      .body { font-size: 28px; }
+      .small { font-size: 22px; }
+      .menu { font-size: 37px; font-weight: 600; }
+    </style>
+  </defs>
+
+  <rect width="2880" height="1800" fill="#080a0f"/>
+  <rect width="2880" height="1800" fill="url(#grid)"/>
+
+  <!-- Quiet masthead: no surrounding card or status pills. -->
+  <text x="112" y="145" class="mono cyan" font-size="51"></text>
+  <text x="184" y="141" class="mono text" font-size="37" font-weight="800">XIAOXIN</text>
+  <text x="367" y="141" class="mono muted" font-size="25">boot control</text>
+  <text x="2768" y="141" class="mono muted small" text-anchor="end">  UEFI  ·  GRUB 2.14  ·  <tspan class="green"> ready</tspan></text>
+
+  <!-- One primary outline. The title follows OMP's title-in-border treatment. -->
+  <rect x="100" y="245" width="2680" height="1325" rx="18" fill="#0b0f15" fill-opacity="0.92" stroke="#536079" stroke-width="3"/>
+  <rect x="138" y="226" width="246" height="40" fill="#080a0f"/>
+  <text x="152" y="257" class="mono purple" font-size="28" font-weight="800">  Systems</text>
+
+  <!-- Main content uses rules, not nested panels. -->
+  <line x1="1885" y1="245" x2="1885" y2="1435" stroke="#354055" stroke-width="2"/>
+
+  <!-- Boot entries -->
+  <text x="152" y="330" class="mono muted small">SELECT A BOOT TARGET</text>
+  <text x="1818" y="330" class="mono dim small" text-anchor="end">5 entries</text>
+
+  <text x="187" y="450" class="mono dim" font-size="34"></text>
+  <line x1="165" y1="496" x2="1818" y2="496" stroke="#252e3d" stroke-width="2"/>
+  <text x="187" y="576" class="mono dim" font-size="34"></text>
+  <line x1="165" y1="622" x2="1818" y2="622" stroke="#252e3d" stroke-width="2"/>
+  <text x="187" y="702" class="mono dim" font-size="34"></text>
+  <line x1="165" y1="748" x2="1818" y2="748" stroke="#252e3d" stroke-width="2"/>
+  <text x="187" y="828" class="mono dim" font-size="34"></text>
+  <line x1="165" y1="874" x2="1818" y2="874" stroke="#252e3d" stroke-width="2"/>
+  <text x="187" y="954" class="mono dim" font-size="34"></text>
+  <line x1="165" y1="1000" x2="1818" y2="1000" stroke="#354055" stroke-width="2"/>
+  <text x="165" y="1123" class="mono muted label">  Loader status</text>
+  <text x="165" y="1190" class="mono green body"></text>
+  <text x="216" y="1190" class="mono text body">primary</text>
+  <text x="410" y="1190" class="mono muted body">/EFI/GRUB/grubx64.efi</text>
+  <text x="165" y="1250" class="mono green body"></text>
+  <text x="216" y="1250" class="mono text body">fallback</text>
+  <text x="410" y="1250" class="mono muted body">/EFI/Boot/bootx64.efi</text>
+  <text x="165" y="1310" class="mono green body"></text>
+  <text x="216" y="1310" class="mono text body">Windows</text>
+  <text x="410" y="1310" class="mono muted body">chainload · FC48-4CF3</text>
+
+  <!-- Right-side information: one column with section rules only. -->
+  <text x="1935" y="330" class="mono purple label">  System</text>
+  <line x1="2110" y1="322" x2="2728" y2="322" stroke="#354055" stroke-width="2"/>
+
+  <text x="1935" y="402" class="mono muted small">HOST</text>
+  <text x="2218" y="402" class="mono text body">xiaoxin</text>
+  <text x="1935" y="464" class="mono muted small">BOOT MODE</text>
+  <text x="2218" y="464" class="mono green body">UEFI</text>
+  <text x="1935" y="526" class="mono muted small">ROOT FS</text>
+  <text x="2218" y="526" class="mono text body">BTRFS  /  @</text>
+  <text x="1935" y="588" class="mono muted small">LINUX ESP</text>
+  <text x="2218" y="588" class="mono text body">WD  /  1 GiB</text>
+  <text x="1935" y="650" class="mono muted small">SECURE BOOT</text>
+  <text x="2218" y="650" class="mono yellow body">OFF</text>
+
+  <text x="1935" y="748" class="mono yellow label">  Storage</text>
+  <line x1="2133" y1="740" x2="2728" y2="740" stroke="#354055" stroke-width="2"/>
+
+  <text x="1935" y="824" class="mono cyan" font-size="26"></text>
+  <text x="1982" y="824" class="mono text body">WD_BLACK SN770</text>
+  <text x="2728" y="824" class="mono muted small" text-anchor="end">ARCH · BTRFS</text>
+  <rect x="1935" y="855" width="793" height="10" rx="5" fill="#1d2635"/>
+  <rect x="1935" y="855" width="475" height="10" rx="5" fill="#70c0e8"/>
+
+  <text x="1935" y="942" class="mono purple" font-size="26"></text>
+  <text x="1982" y="942" class="mono text body">YMTC YMSS2ED08B66MC</text>
+  <text x="2728" y="942" class="mono muted small" text-anchor="end">WINDOWS · DATA</text>
+  <rect x="1935" y="973" width="793" height="10" rx="5" fill="#1d2635"/>
+  <rect x="1935" y="973" width="658" height="10" rx="5" fill="#c099ff"/>
+
+  <text x="1935" y="1082" class="mono green label">  Auto boot</text>
+  <line x1="2152" y1="1074" x2="2728" y2="1074" stroke="#354055" stroke-width="2"/>
+
+  <text x="1935" y="1165" class="mono text body">Arch Linux</text>
+  <text x="1935" y="1275" class="mono dim small">saved default  ·  press any key to pause</text>
+
+  <!-- One shared footer inside the primary outline. -->
+  <line x1="100" y1="1435" x2="2780" y2="1435" stroke="#354055" stroke-width="2"/>
+  <text x="152" y="1513" class="mono cyan label">↵</text>
+  <text x="194" y="1513" class="mono muted label">boot</text>
+  <text x="358" y="1513" class="mono yellow label">E</text>
+  <text x="396" y="1513" class="mono muted label">edit</text>
+  <text x="542" y="1513" class="mono purple label">C</text>
+  <text x="580" y="1513" class="mono muted label">console</text>
+  <text x="782" y="1513" class="mono green label">↑↓</text>
+  <text x="838" y="1513" class="mono muted label">navigate</text>
+  <text x="2728" y="1513" class="mono dim small" text-anchor="end">GRUB theme mockup  ·  2880×1800</text>
+
+  <text x="1440" y="1680" class="mono dim small" text-anchor="middle">XIAOXIN  /  dual boot workstation</text>
+</svg>

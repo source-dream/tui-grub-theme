@@ -1,0 +1,7 @@
+*.bak-*
+*.img
+*.iso
+*.ppm
+*.qcow2
+.venv/
+build/
