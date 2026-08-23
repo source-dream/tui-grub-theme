@@ -30,8 +30,18 @@
   <text x="2768" y="141" class="mono muted small" text-anchor="end">  UEFI  ·  GRUB 2.14  ·  <tspan class="green"> ready</tspan></text>
 
   <!-- One primary outline. The title follows OMP's title-in-border treatment. -->
-  <rect x="100" y="245" width="2680" height="1325" rx="18" fill="#0b0f15" fill-opacity="0.92" stroke="#536079" stroke-width="3"/>
-  <rect x="138" y="226" width="246" height="40" fill="#080a0f"/>
+  <rect x="100" y="245" width="2680" height="1325" rx="18" fill="#0b0f15" fill-opacity="0.92"/>
+  <path d="M138 245
+           H118
+           A18 18 0 0 0 100 263
+           V1552
+           A18 18 0 0 0 118 1570
+           H2762
+           A18 18 0 0 0 2780 1552
+           V263
+           A18 18 0 0 0 2762 245
+           H384"
+        fill="none" stroke="#536079" stroke-width="3"/>
   <text x="152" y="257" class="mono purple" font-size="28" font-weight="800">  Systems</text>
 
   <!-- Main content uses rules, not nested panels. -->

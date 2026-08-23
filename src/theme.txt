@@ -8,10 +8,10 @@ message-color: "#d9e0ee"
 message-bg-color: "#080a0f"
 terminal-font: "JetBrains Mono Body 28 Regular 28"
 terminal-border: "0"
-terminal-left: "5%"
-terminal-top: "8%"
-terminal-width: "90%"
-terminal-height: "84%"
+terminal-left: "0"
+terminal-top: "0"
+terminal-width: "100%"
+terminal-height: "100%"
 
 + boot_menu {
   left = 142
