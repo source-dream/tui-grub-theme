@@ -1,0 +1,44 @@
+{
+  "theme": {
+    "file": "/ventoy/theme/xiaoxin-tui/theme.txt",
+    "gfxmode": "2880x1800",
+    "display_mode": "GUI",
+    "ventoy_left": "72%",
+    "ventoy_top": "7%",
+    "ventoy_color": "#748096",
+    "fonts": [
+      "/ventoy/theme/xiaoxin-tui/JetBrainsMono-Ventoy-24.pf2",
+      "/ventoy/theme/xiaoxin-tui/NotoSansMonoCJKSC-Menu-28.pf2"
+    ]
+  },
+  "menu_class": [
+    {
+      "key": "archlinux",
+      "class": "arch"
+    },
+    {
+      "key": "ubuntu",
+      "class": "linux"
+    },
+    {
+      "key": "Rocky",
+      "class": "linux"
+    },
+    {
+      "key": "kali",
+      "class": "linux"
+    },
+    {
+      "key": "FirPE",
+      "class": "windows"
+    },
+    {
+      "key": "WePE",
+      "class": "windows"
+    },
+    {
+      "key": "windows",
+      "class": "windows"
+    }
+  ]
+}

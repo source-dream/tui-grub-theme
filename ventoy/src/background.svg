@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2880" height="1800" viewBox="0 0 2880 1800">
+  <defs>
+    <pattern id="grid" width="56" height="56" patternUnits="userSpaceOnUse">
+      <path d="M56 0H0V56" fill="none" stroke="#242b38" stroke-width="1" opacity="0.12"/>
+    </pattern>
+    <style>
+      .mono { font-family: "JetBrainsMono Nerd Font Mono", "JetBrains Mono", monospace; letter-spacing: 0; }
+      .text { fill: #d9e0ee; }
+      .muted { fill: #748096; }
+      .dim { fill: #4d586b; }
+      .cyan { fill: #70c0e8; }
+      .green { fill: #8bd49c; }
+      .yellow { fill: #e5c07b; }
+      .purple { fill: #c099ff; }
+      .label { font-size: 25px; font-weight: 700; }
+      .body { font-size: 28px; }
+      .small { font-size: 22px; }
+    </style>
+  </defs>
+
+  <rect width="2880" height="1800" fill="#080a0f"/>
+  <rect width="2880" height="1800" fill="url(#grid)"/>
+
+  <text x="112" y="145" class="mono cyan" font-size="47"></text>
+  <text x="184" y="141" class="mono text" font-size="37" font-weight="800">XIAOXIN</text>
+  <text x="367" y="141" class="mono muted" font-size="25">portable boot</text>
+
+  <path d="M138 245
+           H118
+           A18 18 0 0 0 100 263
+           V1552
+           A18 18 0 0 0 118 1570
+           H2762
+           A18 18 0 0 0 2780 1552
+           V263
+           A18 18 0 0 0 2762 245
+           H402"
+        fill="none" stroke="#536079" stroke-width="3"/>
+  <text x="152" y="257" class="mono purple" font-size="28" font-weight="800">  Boot library</text>
+
+  <line x1="1930" y1="245" x2="1930" y2="1450" stroke="#354055" stroke-width="2"/>
+  <line x1="100" y1="1450" x2="2780" y2="1450" stroke="#354055" stroke-width="2"/>
+
+  <text x="152" y="330" class="mono muted small">SELECT A BOOT IMAGE</text>
+  <text x="1868" y="330" class="mono dim small" text-anchor="end">SCROLLABLE LIBRARY</text>
+
+  <line x1="165" y1="452" x2="1870" y2="452" stroke="#252e3d" stroke-width="2"/>
+  <line x1="165" y1="544" x2="1870" y2="544" stroke="#252e3d" stroke-width="2"/>
+  <line x1="165" y1="636" x2="1870" y2="636" stroke="#252e3d" stroke-width="2"/>
+  <line x1="165" y1="728" x2="1870" y2="728" stroke="#252e3d" stroke-width="2"/>
+  <line x1="165" y1="820" x2="1870" y2="820" stroke="#252e3d" stroke-width="2"/>
+  <line x1="165" y1="912" x2="1870" y2="912" stroke="#252e3d" stroke-width="2"/>
+  <line x1="165" y1="1004" x2="1870" y2="1004" stroke="#252e3d" stroke-width="2"/>
+  <line x1="165" y1="1096" x2="1870" y2="1096" stroke="#252e3d" stroke-width="2"/>
+  <line x1="165" y1="1188" x2="1870" y2="1188" stroke="#252e3d" stroke-width="2"/>
+  <line x1="165" y1="1280" x2="1870" y2="1280" stroke="#354055" stroke-width="2"/>
+
+  <text x="1985" y="330" class="mono purple label">  Media</text>
+  <line x1="2165" y1="322" x2="2728" y2="322" stroke="#354055" stroke-width="2"/>
+
+  <text x="1985" y="402" class="mono muted small">DEVICE</text>
+  <text x="2250" y="402" class="mono text body">SanDisk 3.2Gen1</text>
+  <text x="1985" y="464" class="mono muted small">VOLUME</text>
+  <text x="2250" y="464" class="mono text body">ISO  /  exFAT</text>
+  <text x="1985" y="526" class="mono muted small">CAPACITY</text>
+  <text x="2250" y="526" class="mono text body">34.6 GiB</text>
+  <text x="1985" y="588" class="mono muted small">BOOT</text>
+  <text x="2250" y="588" class="mono green body">UEFI  +  BIOS</text>
+  <text x="1985" y="650" class="mono muted small">SECURE BOOT</text>
+  <text x="2250" y="650" class="mono yellow body">SUPPORTED</text>
+
+  <text x="1985" y="748" class="mono yellow label">  Image types</text>
+  <line x1="2252" y1="740" x2="2728" y2="740" stroke="#354055" stroke-width="2"/>
+
+  <text x="1985" y="826" class="mono cyan body"></text>
+  <text x="2040" y="826" class="mono text body">Linux installers</text>
+  <text x="2728" y="826" class="mono muted small" text-anchor="end">ISO</text>
+  <text x="1985" y="890" class="mono purple body"></text>
+  <text x="2040" y="890" class="mono text body">Windows / WinPE</text>
+  <text x="2728" y="890" class="mono muted small" text-anchor="end">ISO · WIM</text>
+  <text x="1985" y="954" class="mono yellow body"></text>
+  <text x="2040" y="954" class="mono text body">Appliances</text>
+  <text x="2728" y="954" class="mono muted small" text-anchor="end">IMG · VHD</text>
+
+  <text x="1985" y="1080" class="mono green label">  Runtime flags</text>
+  <line x1="2280" y1="1072" x2="2728" y2="1072" stroke="#354055" stroke-width="2"/>
+
+  <text x="1985" y="1394" class="mono muted small">ACTIVE BOOT MODE</text>
+  <text x="2728" y="1394" class="mono green small" text-anchor="end">NORMAL</text>
+
+  <text x="112" y="1649" class="mono cyan small">  XIAOXIN</text>
+  <text x="280" y="1649" class="mono muted small">/ portable recovery console</text>
+  <text x="2768" y="1649" class="mono dim small" text-anchor="end">Ventoy theme · 2880×1800</text>
+</svg>

@@ -2,6 +2,8 @@
 
 一套面向高分辨率屏幕的 GRUB 2 TUI 主题。设计参考现代终端界面，使用单层轮廓、Nerd Font 图标和克制的状态色，同时保留 GRUB 原生菜单行为。
 
+仓库同时提供独立的 Ventoy 变体，用于高分辨率多启动和恢复 U 盘。两套主题共享视觉语言，但菜单容量、运行时状态和图标分类分别适配各自的引导器。
+
 ![GRUB QEMU preview](assets/screenshots/qemu-2880x1800.png)
 
 ## 特性
@@ -67,6 +69,27 @@ make check
 NERD_FONT_FILE=/path/to/JetBrainsMonoNerdFontMono-Regular.ttf make build
 ```
 
+## Ventoy 变体
+
+Ventoy 源码位于 `ventoy/src/`，构建结果是可直接复制到 Ventoy 数据分区根目录的 `ventoy/dist/ventoy/`。该变体针对 `2880x1800` 设计，提供 10 行可滚动菜单、ISO/IMG/WIM/VHD 图标、Ventoy 运行时状态和中英文等宽字体。
+
+![Ventoy QEMU preview](ventoy/assets/screenshots/qemu-2880x1800.png)
+
+构建与检查：
+
+```sh
+make build-ventoy
+make check-ventoy
+```
+
+部署前备份数据分区中已有的 `/ventoy/ventoy.json` 和同名主题目录，然后复制发布树：
+
+```sh
+cp -R ventoy/dist/ventoy /path/to/ventoy-data-partition/
+```
+
+主题只应放在保存 ISO 文件的第一个 Ventoy 数据分区。不要将主题或 `ventoy.json` 写入 32 MiB 的 `VTOYEFI` 分区。图形模式不兼容时可在 Ventoy 中按 `F7` 临时切换到文本模式。
+
 ## 预览
 
 安装 `grub2-theme-preview`、QEMU、OVMF、mtools 与 xorriso 后运行：
@@ -89,6 +112,7 @@ make preview
 ├── dist/xiaoxin-tui/         # 可直接安装的主题
 ├── scripts/                  # 构建、检查、安装和预览脚本
 ├── src/                      # SVG 与 theme.txt 源码
+├── ventoy/                   # Ventoy 专用源码、发布树和截图
 └── .github/workflows/        # 持续集成校验
 ```
 
@@ -111,4 +135,6 @@ sudo cp /boot/grub/grub.cfg.bak-TIMESTAMP /boot/grub/grub.cfg
 
 ## License
 
-[MIT](LICENSE)
+Theme source code is licensed under [MIT](LICENSE). Generated PF2 fonts and
+font-derived icon assets retain their upstream SIL OFL 1.1 terms; see
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
