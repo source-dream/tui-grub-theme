@@ -4,7 +4,7 @@ set -eu
 SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 ROOT_DIR=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
 SRC_DIR="$ROOT_DIR/src"
-OUTPUT_DIR=${OUTPUT_DIR:-"$ROOT_DIR/dist/xiaoxin-tui"}
+OUTPUT_DIR=${OUTPUT_DIR:-"$ROOT_DIR/dist/tui-grub-theme"}
 
 require_command() {
   if ! command -v "$1" >/dev/null 2>&1; then

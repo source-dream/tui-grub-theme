@@ -12,6 +12,6 @@ if ! command -v grub2-theme-preview >/dev/null 2>&1; then
 fi
 
 exec grub2-theme-preview \
-  "$ROOT_DIR/dist/xiaoxin-tui" \
+  "$ROOT_DIR/dist/tui-grub-theme" \
   --resolution "$RESOLUTION" \
   "$@"

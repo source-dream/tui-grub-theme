@@ -3,7 +3,7 @@ set -eu
 
 SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 ROOT_DIR=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
-DIST_DIR="$ROOT_DIR/dist/xiaoxin-tui"
+DIST_DIR="$ROOT_DIR/dist/tui-grub-theme"
 
 for script in "$ROOT_DIR"/scripts/*.sh; do
   sh -n "$script"
@@ -47,4 +47,4 @@ fi
 file "$DIST_DIR/JetBrainsMono-Menu-37.pf2" | grep -q "GRUB2 font"
 file "$DIST_DIR/JetBrainsMono-Body-28.pf2" | grep -q "GRUB2 font"
 
-echo "Repository checks passed."
+echo "Default 2880x1800 profile checks passed."

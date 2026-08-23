@@ -1,12 +1,12 @@
 {
   "theme": {
     "file": [
-      "/ventoy/theme/xiaoxin-tui_2880x1800/theme.txt",
-      "/ventoy/theme/xiaoxin-tui_2560x1600/theme.txt",
-      "/ventoy/theme/xiaoxin-tui_1920x1200/theme.txt",
-      "/ventoy/theme/xiaoxin-tui_1920x1080/theme.txt",
-      "/ventoy/theme/xiaoxin-tui_1366x768/theme.txt",
-      "/ventoy/theme/xiaoxin-tui_1024x768/theme.txt"
+      "/ventoy/theme/tui-grub-theme_2880x1800/theme.txt",
+      "/ventoy/theme/tui-grub-theme_2560x1600/theme.txt",
+      "/ventoy/theme/tui-grub-theme_1920x1200/theme.txt",
+      "/ventoy/theme/tui-grub-theme_1920x1080/theme.txt",
+      "/ventoy/theme/tui-grub-theme_1366x768/theme.txt",
+      "/ventoy/theme/tui-grub-theme_1024x768/theme.txt"
     ],
     "default_file": 0,
     "resolution_fit": 1,
@@ -16,12 +16,12 @@
     "ventoy_top": "7%",
     "ventoy_color": "#748096",
     "fonts": [
-      "/ventoy/theme/xiaoxin-tui/fonts/JetBrainsMono-Ventoy-24.pf2",
-      "/ventoy/theme/xiaoxin-tui/fonts/NotoSansMonoCJKSC-Menu-28.pf2",
-      "/ventoy/theme/xiaoxin-tui/fonts/JetBrainsMono-Ventoy-18.pf2",
-      "/ventoy/theme/xiaoxin-tui/fonts/NotoSansMonoCJKSC-Menu-20.pf2",
-      "/ventoy/theme/xiaoxin-tui/fonts/JetBrainsMono-Ventoy-14.pf2",
-      "/ventoy/theme/xiaoxin-tui/fonts/NotoSansMonoCJKSC-Menu-16.pf2"
+      "/ventoy/theme/tui-grub-theme/fonts/JetBrainsMono-Ventoy-24.pf2",
+      "/ventoy/theme/tui-grub-theme/fonts/NotoSansMonoCJKSC-Menu-28.pf2",
+      "/ventoy/theme/tui-grub-theme/fonts/JetBrainsMono-Ventoy-18.pf2",
+      "/ventoy/theme/tui-grub-theme/fonts/NotoSansMonoCJKSC-Menu-20.pf2",
+      "/ventoy/theme/tui-grub-theme/fonts/JetBrainsMono-Ventoy-14.pf2",
+      "/ventoy/theme/tui-grub-theme/fonts/NotoSansMonoCJKSC-Menu-16.pf2"
     ]
   },
   "menu_class": [

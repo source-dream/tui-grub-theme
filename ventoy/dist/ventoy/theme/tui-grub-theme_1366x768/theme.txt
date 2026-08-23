@@ -6,10 +6,10 @@
 title-text: ""
 desktop-color: "#080a0f"
 desktop-image: "background.png"
-message-font: "JetBrains Mono Ventoy 24 Regular 24"
+message-font: "JetBrains Mono Ventoy 14 Regular 14"
 message-color: "#d9e0ee"
 message-bg-color: "#080a0f"
-terminal-font: "JetBrains Mono Ventoy 24 Regular 24"
+terminal-font: "JetBrains Mono Ventoy 14 Regular 14"
 terminal-border: "0"
 terminal-left: "0"
 terminal-top: "0"
@@ -17,106 +17,106 @@ terminal-width: "100%"
 terminal-height: "100%"
 
 + boot_menu {
-  left = 142
-  top = 360
-  width = 1710
-  height = 920
-  item_font = "Noto Sans Mono CJK SC Menu 28 Regular 28"
+  left = 67
+  top = 154
+  width = 811
+  height = 393
+  item_font = "Noto Sans Mono CJK SC Menu 16 Regular 16"
   item_color = "#d9e0ee"
   selected_item_color = "#d9e0ee"
-  icon_width = 64
-  icon_height = 48
-  item_icon_space = 18
-  item_height = 92
+  icon_width = 30
+  icon_height = 20
+  item_icon_space = 9
+  item_height = 39
   item_padding = 0
   item_spacing = 0
   menu_pixmap_style = "menu_*.png"
   selected_item_pixmap_style = "highlight_*.png"
   scrollbar = true
-  scrollbar_width = 10
+  scrollbar_width = 5
   scrollbar_frame = "scrollbar_frame_*.png"
   scrollbar_thumb = "scrollbar_thumb_*.png"
   scrollbar_slice = "east"
-  scrollbar_left_pad = 14
-  scrollbar_top_pad = 8
-  scrollbar_bottom_pad = 8
+  scrollbar_left_pad = 7
+  scrollbar_top_pad = 3
+  scrollbar_bottom_pad = 3
 }
 
 + hbox {
-  left = 1985
-  top = 1120
-  width = 743
-  height = 42
+  left = 941
+  top = 478
+  width = 352
+  height = 18
   + label {
     text = "@VTOY_MEM_DISK@"
     color = "#e5c07b"
-    font = "JetBrains Mono Ventoy 24 Regular 24"
+    font = "JetBrains Mono Ventoy 14 Regular 14"
     align = "left"
   }
 }
 
 + hbox {
-  left = 1985
-  top = 1178
-  width = 743
-  height = 42
+  left = 941
+  top = 503
+  width = 352
+  height = 18
   + label {
     text = "@VTOY_ISO_RAW@"
     color = "#e5c07b"
-    font = "JetBrains Mono Ventoy 24 Regular 24"
+    font = "JetBrains Mono Ventoy 14 Regular 14"
     align = "left"
   }
 }
 
 + hbox {
-  left = 1985
-  top = 1236
-  width = 743
-  height = 42
+  left = 941
+  top = 527
+  width = 352
+  height = 18
   + label {
     text = "@VTOY_GRUB2_MODE@"
     color = "#c099ff"
-    font = "JetBrains Mono Ventoy 24 Regular 24"
+    font = "JetBrains Mono Ventoy 14 Regular 14"
     align = "left"
   }
 }
 
 + hbox {
-  left = 1985
-  top = 1294
-  width = 743
-  height = 42
+  left = 941
+  top = 552
+  width = 352
+  height = 18
   + label {
     text = "@VTOY_WIMBOOT_MODE@"
     color = "#c099ff"
-    font = "JetBrains Mono Ventoy 24 Regular 24"
+    font = "JetBrains Mono Ventoy 14 Regular 14"
     align = "left"
   }
 }
 
 + hbox {
-  left = 142
-  top = 1483
-  width = 2586
-  height = 48
+  left = 67
+  top = 633
+  width = 1227
+  height = 20
   + label {
     text = "@VTOY_HOTKEY_TIP@"
     color = "#748096"
-    font = "JetBrains Mono Ventoy 24 Regular 24"
+    font = "JetBrains Mono Ventoy 14 Regular 14"
     align = "center"
   }
 }
 
 + progress_bar {
   id = "__timeout__"
-  left = 1985
-  top = 1417
-  width = 743
-  height = 10
+  left = 941
+  top = 605
+  width = 352
+  height = 4
   text = ""
   text_color = "#8bd49c"
   fg_color = "#8bd49c"
   bg_color = "#1d2635"
   border_color = "#1d2635"
-  font = "JetBrains Mono Ventoy 24 Regular 24"
+  font = "JetBrains Mono Ventoy 14 Regular 14"
 }

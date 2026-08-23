@@ -6,7 +6,7 @@ ROOT_DIR=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
 SRC_DIR="$ROOT_DIR/ventoy/src"
 OUTPUT_ROOT=${OUTPUT_ROOT:-"$ROOT_DIR/ventoy/dist/ventoy"}
 THEME_ROOT="$OUTPUT_ROOT/theme"
-SHARED_DIR="$THEME_ROOT/xiaoxin-tui"
+SHARED_DIR="$THEME_ROOT/tui-grub-theme"
 PROFILES_FILE="$SRC_DIR/profiles.txt"
 
 require_command() {
@@ -133,7 +133,7 @@ while read -r width height tier; do
 
   scale_x=$(awk -v width="$width" 'BEGIN { printf "%.9f", width / 2880 }')
   scale_y=$(awk -v height="$height" 'BEGIN { printf "%.9f", height / 1800 }')
-  theme_dir="$THEME_ROOT/xiaoxin-tui_${width}x${height}"
+  theme_dir="$THEME_ROOT/tui-grub-theme_${width}x${height}"
 
   install -d -m 0755 "$theme_dir/icons"
   scale_theme "$SRC_DIR/theme.txt" "$theme_dir/theme.txt" \

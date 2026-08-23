@@ -23,8 +23,8 @@
   <rect width="2880" height="1800" fill="url(#grid)"/>
 
   <text x="112" y="145" class="mono cyan" font-size="47"></text>
-  <text x="184" y="141" class="mono text" font-size="37" font-weight="800">XIAOXIN</text>
-  <text x="367" y="141" class="mono muted" font-size="25">portable boot</text>
+  <text x="184" y="141" class="mono text" font-size="37" font-weight="800">TUI BOOT</text>
+  <text x="390" y="141" class="mono muted" font-size="25">portable image library</text>
 
   <path d="M138 245
            H118
@@ -60,11 +60,11 @@
   <line x1="2165" y1="322" x2="2728" y2="322" stroke="#354055" stroke-width="2"/>
 
   <text x="1985" y="402" class="mono muted small">DEVICE</text>
-  <text x="2250" y="402" class="mono text body">SanDisk 3.2Gen1</text>
-  <text x="1985" y="464" class="mono muted small">VOLUME</text>
-  <text x="2250" y="464" class="mono text body">ISO  /  exFAT</text>
-  <text x="1985" y="526" class="mono muted small">CAPACITY</text>
-  <text x="2250" y="526" class="mono text body">34.6 GiB</text>
+  <text x="2250" y="402" class="mono text body">Ventoy media</text>
+  <text x="1985" y="464" class="mono muted small">CONTENT</text>
+  <text x="2250" y="464" class="mono text body">boot images</text>
+  <text x="1985" y="526" class="mono muted small">PARTITION</text>
+  <text x="2250" y="526" class="mono text body">data volume</text>
   <text x="1985" y="588" class="mono muted small">BOOT</text>
   <text x="2250" y="588" class="mono green body">UEFI  +  BIOS</text>
   <text x="1985" y="650" class="mono muted small">SECURE BOOT</text>
@@ -89,7 +89,7 @@
   <text x="1985" y="1394" class="mono muted small">ACTIVE BOOT MODE</text>
   <text x="2728" y="1394" class="mono green small" text-anchor="end">NORMAL</text>
 
-  <text x="112" y="1649" class="mono cyan small">  XIAOXIN</text>
-  <text x="280" y="1649" class="mono muted small">/ portable recovery console</text>
+  <text x="112" y="1649" class="mono cyan small">  TUI BOOT</text>
+  <text x="310" y="1649" class="mono muted small">/ portable recovery console</text>
   <text x="2768" y="1649" class="mono dim small" text-anchor="end">Ventoy theme · adaptive profile</text>
 </svg>

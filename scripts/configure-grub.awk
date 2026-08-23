@@ -5,7 +5,7 @@ BEGIN {
 
 /^[[:space:]]*GRUB_GFXMODE=/ {
   if (!gfxmode_seen) {
-    print "GRUB_GFXMODE=2880x1800,auto"
+    print "GRUB_GFXMODE=" gfxmode
     gfxmode_seen = 1
   }
   next
@@ -25,7 +25,7 @@ BEGIN {
 
 END {
   if (!gfxmode_seen)
-    print "GRUB_GFXMODE=2880x1800,auto"
+    print "GRUB_GFXMODE=" gfxmode
   if (!theme_seen)
     print "GRUB_THEME=\"" theme_path "\""
 }

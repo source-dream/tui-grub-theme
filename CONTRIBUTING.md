@@ -1,7 +1,7 @@
 # Contributing
 
 1. Edit SVG and theme sources under `src/`.
-2. Run `make build` to refresh `dist/xiaoxin-tui/`.
+2. Run `make build` to refresh `dist/tui-grub-theme/` and the resolution profiles.
 3. Run `make check` before committing.
 4. Include an updated QEMU screenshot for visible layout changes.
 

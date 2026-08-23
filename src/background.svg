@@ -24,10 +24,10 @@
   <rect width="2880" height="1800" fill="url(#grid)"/>
 
   <!-- Quiet masthead: no surrounding card or status pills. -->
-  <text x="112" y="145" class="mono cyan" font-size="51"></text>
-  <text x="184" y="141" class="mono text" font-size="37" font-weight="800">XIAOXIN</text>
-  <text x="367" y="141" class="mono muted" font-size="25">boot control</text>
-  <text x="2768" y="141" class="mono muted small" text-anchor="end">  UEFI  ·  GRUB 2.14  ·  <tspan class="green"> ready</tspan></text>
+  <text x="112" y="145" class="mono cyan" font-size="51"></text>
+  <text x="184" y="141" class="mono text" font-size="37" font-weight="800">TUI GRUB</text>
+  <text x="410" y="141" class="mono muted" font-size="25">terminal boot interface</text>
+  <text x="2768" y="141" class="mono muted small" text-anchor="end">GRUB 2  ·  gfxmenu  ·  <tspan class="green"> ready</tspan></text>
 
   <!-- One primary outline. The title follows OMP's title-in-border treatment. -->
   <path d="M138 245
@@ -48,7 +48,7 @@
 
   <!-- Boot entries -->
   <text x="152" y="330" class="mono muted small">SELECT A BOOT TARGET</text>
-  <text x="1818" y="330" class="mono dim small" text-anchor="end">5 entries</text>
+  <text x="1818" y="330" class="mono dim small" text-anchor="end">dynamic entries</text>
 
   <text x="187" y="450" class="mono dim" font-size="34"></text>
   <line x1="165" y1="496" x2="1818" y2="496" stroke="#252e3d" stroke-width="2"/>
@@ -60,52 +60,52 @@
   <line x1="165" y1="874" x2="1818" y2="874" stroke="#252e3d" stroke-width="2"/>
   <text x="187" y="954" class="mono dim" font-size="34"></text>
   <line x1="165" y1="1000" x2="1818" y2="1000" stroke="#354055" stroke-width="2"/>
-  <text x="165" y="1123" class="mono muted label">  Loader status</text>
+  <text x="165" y="1123" class="mono muted label">  Theme runtime</text>
   <text x="165" y="1190" class="mono green body"></text>
-  <text x="216" y="1190" class="mono text body">primary</text>
-  <text x="410" y="1190" class="mono muted body">/EFI/GRUB/grubx64.efi</text>
+  <text x="216" y="1190" class="mono text body">renderer</text>
+  <text x="410" y="1190" class="mono muted body">gfxmenu · native boot_menu</text>
   <text x="165" y="1250" class="mono green body"></text>
-  <text x="216" y="1250" class="mono text body">fallback</text>
-  <text x="410" y="1250" class="mono muted body">/EFI/Boot/bootx64.efi</text>
+  <text x="216" y="1250" class="mono text body">classes</text>
+  <text x="410" y="1250" class="mono muted body">Linux · Windows icons</text>
   <text x="165" y="1310" class="mono green body"></text>
-  <text x="216" y="1310" class="mono text body">Windows</text>
-  <text x="410" y="1310" class="mono muted body">chainload · FC48-4CF3</text>
+  <text x="216" y="1310" class="mono text body">fallback</text>
+  <text x="410" y="1310" class="mono muted body">console · text mode</text>
 
   <!-- Right-side information: one column with section rules only. -->
-  <text x="1935" y="330" class="mono purple label">  System</text>
+  <text x="1935" y="330" class="mono purple label">  Theme</text>
   <line x1="2110" y1="322" x2="2728" y2="322" stroke="#354055" stroke-width="2"/>
 
-  <text x="1935" y="402" class="mono muted small">HOST</text>
-  <text x="2218" y="402" class="mono text body">xiaoxin</text>
-  <text x="1935" y="464" class="mono muted small">BOOT MODE</text>
-  <text x="2218" y="464" class="mono green body">UEFI</text>
-  <text x="1935" y="526" class="mono muted small">ROOT FS</text>
-  <text x="2218" y="526" class="mono text body">BTRFS  /  @</text>
-  <text x="1935" y="588" class="mono muted small">LINUX ESP</text>
-  <text x="2218" y="588" class="mono text body">WD  /  1 GiB</text>
-  <text x="1935" y="650" class="mono muted small">SECURE BOOT</text>
-  <text x="2218" y="650" class="mono yellow body">OFF</text>
+  <text x="1935" y="402" class="mono muted small">NAME</text>
+  <text x="2218" y="402" class="mono text body">tui-grub-theme</text>
+  <text x="1935" y="464" class="mono muted small">ENGINE</text>
+  <text x="2218" y="464" class="mono green body">GRUB 2</text>
+  <text x="1935" y="526" class="mono muted small">PROFILE</text>
+  <text x="2218" y="526" class="mono text body">2880x1800</text>
+  <text x="1935" y="588" class="mono muted small">MENU</text>
+  <text x="2218" y="588" class="mono text body">native gfxmenu</text>
+  <text x="1935" y="650" class="mono muted small">LICENSE</text>
+  <text x="2218" y="650" class="mono yellow body">MIT + OFL</text>
 
-  <text x="1935" y="748" class="mono yellow label">  Storage</text>
+  <text x="1935" y="748" class="mono yellow label">  Components</text>
   <line x1="2133" y1="740" x2="2728" y2="740" stroke="#354055" stroke-width="2"/>
 
   <text x="1935" y="824" class="mono cyan" font-size="26"></text>
-  <text x="1982" y="824" class="mono text body">WD_BLACK SN770</text>
-  <text x="2728" y="824" class="mono muted small" text-anchor="end">ARCH · BTRFS</text>
-  <rect x="1935" y="855" width="793" height="10" rx="5" fill="#1d2635"/>
-  <rect x="1935" y="855" width="475" height="10" rx="5" fill="#70c0e8"/>
+  <text x="1982" y="824" class="mono text body">Native entries</text>
+  <text x="2728" y="824" class="mono muted small" text-anchor="end">MENUENTRY</text>
 
-  <text x="1935" y="942" class="mono purple" font-size="26"></text>
-  <text x="1982" y="942" class="mono text body">YMTC YMSS2ED08B66MC</text>
-  <text x="2728" y="942" class="mono muted small" text-anchor="end">WINDOWS · DATA</text>
-  <rect x="1935" y="973" width="793" height="10" rx="5" fill="#1d2635"/>
-  <rect x="1935" y="973" width="658" height="10" rx="5" fill="#c099ff"/>
+  <text x="1935" y="906" class="mono purple" font-size="26"></text>
+  <text x="1982" y="906" class="mono text body">Class icons</text>
+  <text x="2728" y="906" class="mono muted small" text-anchor="end">LINUX · WINDOWS</text>
+
+  <text x="1935" y="988" class="mono green" font-size="26"></text>
+  <text x="1982" y="988" class="mono text body">Timeout state</text>
+  <text x="2728" y="988" class="mono muted small" text-anchor="end">DYNAMIC</text>
 
   <text x="1935" y="1082" class="mono green label">  Auto boot</text>
   <line x1="2152" y1="1074" x2="2728" y2="1074" stroke="#354055" stroke-width="2"/>
 
-  <text x="1935" y="1165" class="mono text body">Arch Linux</text>
-  <text x="1935" y="1275" class="mono dim small">saved default  ·  press any key to pause</text>
+  <text x="1935" y="1165" class="mono text body">selected entry</text>
+  <text x="1935" y="1275" class="mono dim small">countdown is rendered by GRUB</text>
 
   <!-- One shared footer inside the primary outline. -->
   <line x1="100" y1="1435" x2="2780" y2="1435" stroke="#354055" stroke-width="2"/>
@@ -117,7 +117,7 @@
   <text x="580" y="1513" class="mono muted label">console</text>
   <text x="782" y="1513" class="mono green label">↑↓</text>
   <text x="838" y="1513" class="mono muted label">navigate</text>
-  <text x="2728" y="1513" class="mono dim small" text-anchor="end">GRUB theme mockup  ·  2880×1800</text>
+  <text x="2728" y="1513" class="mono dim small" text-anchor="end">tui-grub-theme  ·  2880×1800</text>
 
-  <text x="1440" y="1680" class="mono dim small" text-anchor="middle">XIAOXIN  /  dual boot workstation</text>
+  <text x="1440" y="1680" class="mono dim small" text-anchor="middle">TUI GRUB  /  terminal boot interface</text>
 </svg>

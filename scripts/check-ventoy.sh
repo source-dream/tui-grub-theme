@@ -6,7 +6,7 @@ ROOT_DIR=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
 SRC_DIR="$ROOT_DIR/ventoy/src"
 OUTPUT_ROOT="$ROOT_DIR/ventoy/dist/ventoy"
 THEME_ROOT="$OUTPUT_ROOT/theme"
-SHARED_DIR="$THEME_ROOT/xiaoxin-tui"
+SHARED_DIR="$THEME_ROOT/tui-grub-theme"
 
 scale_value() {
   awk -v value="$1" -v scale="$2" 'BEGIN { printf "%d", (value * scale) + 0.5 }'
@@ -51,7 +51,7 @@ while read -r width height tier; do
 
   scale_x=$(awk -v width="$width" 'BEGIN { printf "%.9f", width / 2880 }')
   scale_y=$(awk -v height="$height" 'BEGIN { printf "%.9f", height / 1800 }')
-  theme_dir="$THEME_ROOT/xiaoxin-tui_${width}x${height}"
+  theme_dir="$THEME_ROOT/tui-grub-theme_${width}x${height}"
 
   for file_name in \
     background.png highlight_c.png menu_c.png menu_e.png \
@@ -72,7 +72,7 @@ while read -r width height tier; do
 
   grep -q 'menu_pixmap_style = "menu_\*.png"' "$theme_dir/theme.txt"
   grep -q 'scrollbar_slice = "east"' "$theme_dir/theme.txt"
-  grep -q "xiaoxin-tui_${width}x${height}/theme.txt" "$OUTPUT_ROOT/ventoy.json"
+  grep -q "tui-grub-theme_${width}x${height}/theme.txt" "$OUTPUT_ROOT/ventoy.json"
 
   if command -v identify >/dev/null 2>&1; then
     [ "$(identify -format '%wx%h' "$theme_dir/background.png")" = "${width}x${height}" ]
