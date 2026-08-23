@@ -15,6 +15,7 @@ All notable changes to this project are documented here.
 
 ### Changed
 
+- Replaced the rectangular GRUB timeout indicator with a thinner rounded pixmap bar.
 - Replaced the GRUB and Ventoy previews with direct 2880x1800 QEMU framebuffer captures.
 - Renamed every deployable theme directory to `tui-grub-theme`.
 - Replaced device-named GRUB variants with generic resolution profiles.

@@ -73,7 +73,20 @@ if [ "$BUILD_FIRST" -eq 1 ]; then
   "$BUILD_SCRIPT"
 fi
 
-for file in background.png highlight_c.png "$MENU_FONT" "$BODY_FONT" theme.txt icons/arch.png icons/windows.png; do
+for file in \
+  background.png \
+  highlight_c.png \
+  progress-track_w.png \
+  progress-track_c.png \
+  progress-track_e.png \
+  progress-fill_w.png \
+  progress-fill_c.png \
+  progress-fill_e.png \
+  "$MENU_FONT" \
+  "$BODY_FONT" \
+  theme.txt \
+  icons/arch.png \
+  icons/windows.png; do
   if [ ! -s "$DIST_DIR/$file" ]; then
     echo "error: distribution file missing; run ./scripts/build.sh: $file" >&2
     exit 1
@@ -137,6 +150,12 @@ as_root install -d -m 0755 "$THEME_DIR/icons"
 as_root install -m 0644 \
   "$DIST_DIR/background.png" \
   "$DIST_DIR/highlight_c.png" \
+  "$DIST_DIR/progress-track_w.png" \
+  "$DIST_DIR/progress-track_c.png" \
+  "$DIST_DIR/progress-track_e.png" \
+  "$DIST_DIR/progress-fill_w.png" \
+  "$DIST_DIR/progress-fill_c.png" \
+  "$DIST_DIR/progress-fill_e.png" \
   "$DIST_DIR/$MENU_FONT" \
   "$DIST_DIR/$BODY_FONT" \
   "$DIST_DIR/theme.txt" \

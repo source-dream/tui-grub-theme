@@ -49,11 +49,14 @@ terminal-height: "100%"
   left = 1935
   top = 1205
   width = 793
-  height = 14
+  height = 8
   text = ""
   text_color = "#8bd49c"
   fg_color = "#8bd49c"
   bg_color = "#1d2635"
   border_color = "#1d2635"
+  bar_style = "progress-track_*.png"
+  highlight_style = "progress-fill_*.png"
+  highlight_overlay = true
   font = "JetBrains Mono Body 28 Regular 28"
 }

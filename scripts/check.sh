@@ -17,6 +17,12 @@ if command -v xmllint >/dev/null 2>&1; then
   xmllint --noout \
     "$ROOT_DIR/src/background.svg" \
     "$ROOT_DIR/src/highlight.svg" \
+    "$ROOT_DIR/src/progress-track-w.svg" \
+    "$ROOT_DIR/src/progress-track-c.svg" \
+    "$ROOT_DIR/src/progress-track-e.svg" \
+    "$ROOT_DIR/src/progress-fill-w.svg" \
+    "$ROOT_DIR/src/progress-fill-c.svg" \
+    "$ROOT_DIR/src/progress-fill-e.svg" \
     "$ROOT_DIR/src/icons/arch.svg" \
     "$ROOT_DIR/src/icons/windows.svg"
 fi
@@ -24,6 +30,12 @@ fi
 for file in \
   background.png \
   highlight_c.png \
+  progress-track_w.png \
+  progress-track_c.png \
+  progress-track_e.png \
+  progress-fill_w.png \
+  progress-fill_c.png \
+  progress-fill_e.png \
   JetBrainsMono-Menu-37.pf2 \
   JetBrainsMono-Body-28.pf2 \
   theme.txt \
@@ -40,6 +52,12 @@ cmp "$ROOT_DIR/src/theme.txt" "$DIST_DIR/theme.txt"
 if command -v identify >/dev/null 2>&1; then
   [ "$(identify -format '%wx%h' "$DIST_DIR/background.png")" = "2880x1800" ]
   [ "$(identify -format '%wx%h' "$DIST_DIR/highlight_c.png")" = "1698x126" ]
+  [ "$(identify -format '%wx%h' "$DIST_DIR/progress-track_w.png")" = "4x8" ]
+  [ "$(identify -format '%wx%h' "$DIST_DIR/progress-track_c.png")" = "1x8" ]
+  [ "$(identify -format '%wx%h' "$DIST_DIR/progress-track_e.png")" = "4x8" ]
+  [ "$(identify -format '%wx%h' "$DIST_DIR/progress-fill_w.png")" = "4x8" ]
+  [ "$(identify -format '%wx%h' "$DIST_DIR/progress-fill_c.png")" = "1x8" ]
+  [ "$(identify -format '%wx%h' "$DIST_DIR/progress-fill_e.png")" = "4x8" ]
   [ "$(identify -format '%wx%h' "$DIST_DIR/icons/arch.png")" = "152x52" ]
   [ "$(identify -format '%wx%h' "$DIST_DIR/icons/windows.png")" = "152x52" ]
 fi
