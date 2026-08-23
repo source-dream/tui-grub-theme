@@ -43,18 +43,18 @@
   <line x1="100" y1="1450" x2="2780" y2="1450" stroke="#354055" stroke-width="2"/>
 
   <text x="152" y="330" class="mono muted small">SELECT A BOOT IMAGE</text>
-  <text x="1868" y="330" class="mono dim small" text-anchor="end">SCROLLABLE LIBRARY</text>
+  <text x="1810" y="330" class="mono dim small" text-anchor="end">SCROLLABLE LIBRARY</text>
 
-  <line x1="165" y1="452" x2="1870" y2="452" stroke="#252e3d" stroke-width="2"/>
-  <line x1="165" y1="544" x2="1870" y2="544" stroke="#252e3d" stroke-width="2"/>
-  <line x1="165" y1="636" x2="1870" y2="636" stroke="#252e3d" stroke-width="2"/>
-  <line x1="165" y1="728" x2="1870" y2="728" stroke="#252e3d" stroke-width="2"/>
-  <line x1="165" y1="820" x2="1870" y2="820" stroke="#252e3d" stroke-width="2"/>
-  <line x1="165" y1="912" x2="1870" y2="912" stroke="#252e3d" stroke-width="2"/>
-  <line x1="165" y1="1004" x2="1870" y2="1004" stroke="#252e3d" stroke-width="2"/>
-  <line x1="165" y1="1096" x2="1870" y2="1096" stroke="#252e3d" stroke-width="2"/>
-  <line x1="165" y1="1188" x2="1870" y2="1188" stroke="#252e3d" stroke-width="2"/>
-  <line x1="165" y1="1280" x2="1870" y2="1280" stroke="#354055" stroke-width="2"/>
+  <line x1="165" y1="452" x2="1812" y2="452" stroke="#252e3d" stroke-width="2"/>
+  <line x1="165" y1="544" x2="1812" y2="544" stroke="#252e3d" stroke-width="2"/>
+  <line x1="165" y1="636" x2="1812" y2="636" stroke="#252e3d" stroke-width="2"/>
+  <line x1="165" y1="728" x2="1812" y2="728" stroke="#252e3d" stroke-width="2"/>
+  <line x1="165" y1="820" x2="1812" y2="820" stroke="#252e3d" stroke-width="2"/>
+  <line x1="165" y1="912" x2="1812" y2="912" stroke="#252e3d" stroke-width="2"/>
+  <line x1="165" y1="1004" x2="1812" y2="1004" stroke="#252e3d" stroke-width="2"/>
+  <line x1="165" y1="1096" x2="1812" y2="1096" stroke="#252e3d" stroke-width="2"/>
+  <line x1="165" y1="1188" x2="1812" y2="1188" stroke="#252e3d" stroke-width="2"/>
+  <line x1="165" y1="1280" x2="1812" y2="1280" stroke="#354055" stroke-width="2"/>
 
   <text x="1985" y="330" class="mono purple label">  Media</text>
   <line x1="2165" y1="322" x2="2728" y2="322" stroke="#354055" stroke-width="2"/>

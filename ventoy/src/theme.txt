@@ -27,12 +27,13 @@ terminal-height: "100%"
   item_height = 92
   item_padding = 0
   item_spacing = 0
+  menu_pixmap_style = "menu_*.png"
   selected_item_pixmap_style = "highlight_*.png"
   scrollbar = true
   scrollbar_width = 10
   scrollbar_frame = "scrollbar_frame_*.png"
   scrollbar_thumb = "scrollbar_thumb_*.png"
-  scrollbar_slice = "center"
+  scrollbar_slice = "east"
   scrollbar_left_pad = 14
   scrollbar_top_pad = 8
   scrollbar_bottom_pad = 8

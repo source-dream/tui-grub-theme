@@ -12,6 +12,8 @@ jq empty "$SRC_DIR/ventoy.json"
 jq empty "$OUTPUT_ROOT/ventoy.json"
 cmp "$SRC_DIR/ventoy.json" "$OUTPUT_ROOT/ventoy.json"
 cmp "$SRC_DIR/theme.txt" "$THEME_DIR/theme.txt"
+grep -q 'menu_pixmap_style = "menu_\*.png"' "$THEME_DIR/theme.txt"
+grep -q 'scrollbar_slice = "east"' "$THEME_DIR/theme.txt"
 
 if command -v xmllint >/dev/null 2>&1; then
   find "$SRC_DIR" -name '*.svg' -type f -exec xmllint --noout {} +
@@ -20,6 +22,8 @@ fi
 for file in \
   background.png \
   highlight_c.png \
+  menu_c.png \
+  menu_e.png \
   scrollbar_frame_n.png \
   scrollbar_frame_c.png \
   scrollbar_frame_s.png \
@@ -44,7 +48,9 @@ done
 
 if command -v identify >/dev/null 2>&1; then
   [ "$(identify -format '%wx%h' "$THEME_DIR/background.png")" = "2880x1800" ]
-  [ "$(identify -format '%wx%h' "$THEME_DIR/highlight_c.png")" = "1710x92" ]
+  [ "$(identify -format '%wx%h' "$THEME_DIR/highlight_c.png")" = "1670x92" ]
+  [ "$(identify -format '%wx%h' "$THEME_DIR/menu_c.png")" = "1x1" ]
+  [ "$(identify -format '%wx%h' "$THEME_DIR/menu_e.png")" = "40x1" ]
 fi
 
 file "$THEME_DIR/JetBrainsMono-Ventoy-24.pf2" | grep -q "GRUB2 font"
