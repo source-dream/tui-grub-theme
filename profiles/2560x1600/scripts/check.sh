@@ -50,12 +50,12 @@ cmp "$PROFILE_DIR/src/theme.txt" "$DIST_DIR/theme.txt"
 if command -v identify >/dev/null 2>&1; then
   [ "$(identify -format '%wx%h' "$DIST_DIR/background.png")" = "2560x1600" ]
   [ "$(identify -format '%wx%h' "$DIST_DIR/highlight_c.png")" = "1509x112" ]
-  [ "$(identify -format '%wx%h' "$DIST_DIR/progress-track_w.png")" = "4x28" ]
+  [ "$(identify -format '%wx%h' "$DIST_DIR/progress-track_w.png")" = "6x28" ]
   [ "$(identify -format '%wx%h' "$DIST_DIR/progress-track_c.png")" = "1x28" ]
-  [ "$(identify -format '%wx%h' "$DIST_DIR/progress-track_e.png")" = "4x28" ]
-  [ "$(identify -format '%wx%h' "$DIST_DIR/progress-fill_w.png")" = "4x28" ]
+  [ "$(identify -format '%wx%h' "$DIST_DIR/progress-track_e.png")" = "6x28" ]
+  [ "$(identify -format '%wx%h' "$DIST_DIR/progress-fill_w.png")" = "6x28" ]
   [ "$(identify -format '%wx%h' "$DIST_DIR/progress-fill_c.png")" = "1x28" ]
-  [ "$(identify -format '%wx%h' "$DIST_DIR/progress-fill_e.png")" = "4x28" ]
+  [ "$(identify -format '%wx%h' "$DIST_DIR/progress-fill_e.png")" = "6x28" ]
   [ "$(identify -format '%wx%h' "$DIST_DIR/icons/arch.png")" = "135x46" ]
   [ "$(identify -format '%wx%h' "$DIST_DIR/icons/windows.png")" = "135x46" ]
 fi
