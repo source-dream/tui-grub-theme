@@ -1,0 +1,9 @@
+[Plymouth Theme]
+Name=TUI Boot
+Description=Lightweight line animation matching tui-grub-theme
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/tui-boot
+ScriptFile=/usr/share/plymouth/themes/tui-boot/tui-boot.script
+ConsoleLogBackgroundColor=0x080a0f

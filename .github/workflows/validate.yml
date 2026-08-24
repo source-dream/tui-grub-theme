@@ -15,4 +15,4 @@ jobs:
       - name: Install validators
         run: sudo apt-get update && sudo apt-get install -y shellcheck libxml2-utils file jq
       - name: Validate repository
-        run: ./scripts/check.sh && ./scripts/check-ventoy.sh
+        run: ./scripts/check.sh && ./scripts/check-plymouth.sh && ./scripts/check-ventoy.sh

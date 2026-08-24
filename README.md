@@ -2,22 +2,23 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
-A terminal-inspired GRUB 2 and Ventoy theme with native menus, Nerd Font
-icons, restrained status colors, and reproducible build scripts.
+A terminal-inspired GRUB 2, Plymouth, and Ventoy theme with native menus,
+Nerd Font icons, restrained status colors, and reproducible build scripts.
 
 ![GRUB preview](assets/screenshots/qemu-2880x1800.png)
 
 ## Features
 
 - Native GRUB `boot_menu`, entry classes, timeout label, and progress bar.
+- An optional lightweight Plymouth line animation for the kernel handoff.
 - Prebuilt GRUB profiles for `2880x1800` and `2560x1600`.
 - An adaptive Ventoy variant for six common 16:10, 16:9, and 4:3 modes.
 - SVG sources and reproducible PNG/PF2 builds.
 - Backup-first GRUB installation with generated-config validation.
 - No host names, disk models, UUIDs, or machine-specific paths in the theme.
 
-The GRUB and Ventoy variants share a visual language but are separate
-packages. Choose the installation section for the bootloader you use.
+The GRUB, Plymouth, and Ventoy variants share a visual language but are
+separate packages. Choose the installation section for the component you use.
 
 ## Install The GRUB Theme
 
@@ -84,6 +85,40 @@ sudo cp /boot/grub/grub.cfg.bak-TIMESTAMP /boot/grub/grub.cfg
 ```
 
 Theme failure does not remove the firmware's other EFI boot entries.
+
+## Install The Optional Plymouth Theme
+
+Plymouth runs after GRUB has loaded the kernel and initramfs. The companion
+theme uses scripted line transforms instead of video or full-screen frame
+sequences, and it never waits for an animation cycle to finish.
+
+The following setup is for Arch Linux with `mkinitcpio`. Back up the files
+before editing them:
+
+```sh
+sudo cp /etc/mkinitcpio.conf /etc/mkinitcpio.conf.bak-TIMESTAMP
+sudo cp /etc/default/grub /etc/default/grub.bak-TIMESTAMP
+sudo pacman -S --needed plymouth
+sudo cp /etc/plymouth/plymouthd.conf /etc/plymouth/plymouthd.conf.bak-TIMESTAMP
+sudo install -d /usr/share/plymouth/themes/tui-boot
+sudo cp plymouth/tui-boot/* /usr/share/plymouth/themes/tui-boot/
+sudo plymouth-set-default-theme tui-boot
+```
+
+Add `plymouth` immediately after `systemd` in the `HOOKS` array in
+`/etc/mkinitcpio.conf`, and add `splash` to
+`GRUB_CMDLINE_LINUX_DEFAULT` in `/etc/default/grub`. Then rebuild:
+
+```sh
+sudo mkinitcpio -P
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+sudo grub-script-check /boot/grub/grub.cfg
+```
+
+The existing `quiet` and `loglevel` policy is left to the host. Press `Esc`
+during Plymouth to reveal detailed boot output. A recovery entry can disable
+Plymouth without rebuilding the initramfs by adding `plymouth.enable=0` and
+omitting `splash` from that entry's kernel command line.
 
 ## Install The Ventoy Theme
 
@@ -191,7 +226,7 @@ Select` for a temporary manual selection, or `F7` to fall back to text mode.
 Arch Linux dependencies:
 
 ```sh
-sudo pacman -S --needed grub librsvg libxml2 jq file \
+sudo pacman -S --needed grub librsvg libxml2 jq file imagemagick \
   ttf-jetbrains-mono-nerd noto-fonts-cjk
 ```
 
@@ -200,6 +235,13 @@ Build and validate both GRUB profiles:
 ```sh
 make build
 make check
+```
+
+Rebuild and validate the Plymouth assets:
+
+```sh
+make build-plymouth
+make check-plymouth
 ```
 
 Build and validate the adaptive Ventoy package:
@@ -234,6 +276,7 @@ RESOLUTION=2560x1600 ./scripts/preview.sh --no-kvm
 ├── assets/screenshots/                 # GRUB preview images
 ├── dist/tui-grub-theme/                # Default 2880x1800 GRUB package
 ├── profiles/2560x1600/                 # Generic 2560x1600 GRUB profile
+├── plymouth/                            # Optional animated boot handoff
 ├── scripts/                             # Build, check, install, and preview
 ├── src/                                 # Default GRUB SVG/theme sources
 ├── ventoy/src/                          # Adaptive Ventoy sources

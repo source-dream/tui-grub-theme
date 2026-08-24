@@ -2,22 +2,23 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
-一款终端风格的 GRUB 2 与 Ventoy 主题，使用原生菜单、Nerd Font 图标、
-克制的状态色以及可复现的构建脚本。
+一款终端风格的 GRUB 2、Plymouth 与 Ventoy 主题，使用原生菜单、Nerd Font
+图标、克制的状态色以及可复现的构建脚本。
 
 ![GRUB 预览](assets/screenshots/qemu-2880x1800.png)
 
 ## 功能特性
 
 - 使用原生 GRUB `boot_menu`、入口类别、倒计时标签和进度条。
+- 提供可选的轻量 Plymouth 线条动画，用于内核启动交接阶段。
 - 提供 `2880x1800` 与 `2560x1600` 两套预构建 GRUB profile。
 - 提供自适应 Ventoy 版本，覆盖六种常见的 16:10、16:9 和 4:3 分辨率。
 - 提供 SVG 源文件和可复现的 PNG/PF2 构建流程。
 - GRUB 安装器会先备份，并在替换配置前验证新生成的配置。
 - 主题中不包含主机名、磁盘型号、UUID 或设备专用路径。
 
-GRUB 与 Ventoy 版本共享同一套视觉语言，但属于相互独立的软件包。请根据
-实际使用的引导程序选择对应安装章节。
+GRUB、Plymouth 与 Ventoy 版本共享同一套视觉语言，但属于相互独立的软件包。
+请根据实际使用的组件选择对应安装章节。
 
 ## 安装 GRUB 主题
 
@@ -81,6 +82,37 @@ sudo cp /boot/grub/grub.cfg.bak-TIMESTAMP /boot/grub/grub.cfg
 ```
 
 主题故障不会删除固件中的其他 EFI 启动项。
+
+## 安装可选 Plymouth 主题
+
+Plymouth 在 GRUB 完成内核和 initramfs 加载后运行。配套主题通过脚本控制少量
+线段的缩放与位移，不使用视频或全屏逐帧图片，也不会等待动画循环结束。
+
+以下步骤适用于使用 `mkinitcpio` 的 Arch Linux。编辑前先备份配置：
+
+```sh
+sudo cp /etc/mkinitcpio.conf /etc/mkinitcpio.conf.bak-TIMESTAMP
+sudo cp /etc/default/grub /etc/default/grub.bak-TIMESTAMP
+sudo pacman -S --needed plymouth
+sudo cp /etc/plymouth/plymouthd.conf /etc/plymouth/plymouthd.conf.bak-TIMESTAMP
+sudo install -d /usr/share/plymouth/themes/tui-boot
+sudo cp plymouth/tui-boot/* /usr/share/plymouth/themes/tui-boot/
+sudo plymouth-set-default-theme tui-boot
+```
+
+在 `/etc/mkinitcpio.conf` 的 `HOOKS` 数组中将 `plymouth` 放到 `systemd`
+之后，并在 `/etc/default/grub` 的 `GRUB_CMDLINE_LINUX_DEFAULT` 中加入
+`splash`。然后重新生成：
+
+```sh
+sudo mkinitcpio -P
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+sudo grub-script-check /boot/grub/grub.cfg
+```
+
+主题不会替主机决定 `quiet` 和 `loglevel` 策略。启动时按 `Esc` 可显示详细
+日志。恢复入口可在内核参数中加入 `plymouth.enable=0` 并省略 `splash`，无需
+重新生成 initramfs 即可绕过 Plymouth。
 
 ## 安装 Ventoy 主题
 
@@ -184,7 +216,7 @@ Ventoy 会自动选择匹配主题。可使用 `F5 Tools -> Theme Select` 临时
 Arch Linux 依赖：
 
 ```sh
-sudo pacman -S --needed grub librsvg libxml2 jq file \
+sudo pacman -S --needed grub librsvg libxml2 jq file imagemagick \
   ttf-jetbrains-mono-nerd noto-fonts-cjk
 ```
 
@@ -193,6 +225,13 @@ sudo pacman -S --needed grub librsvg libxml2 jq file \
 ```sh
 make build
 make check
+```
+
+重新生成并检查 Plymouth 资源：
+
+```sh
+make build-plymouth
+make check-plymouth
 ```
 
 构建并验证自适应 Ventoy 包：
@@ -226,6 +265,7 @@ RESOLUTION=2560x1600 ./scripts/preview.sh --no-kvm
 ├── assets/screenshots/                 # GRUB 预览图
 ├── dist/tui-grub-theme/                # 默认 2880x1800 GRUB 包
 ├── profiles/2560x1600/                 # 通用 2560x1600 GRUB profile
+├── plymouth/                            # 可选的动态启动交接主题
 ├── scripts/                             # 构建、检查、安装和预览脚本
 ├── src/                                 # 默认 GRUB SVG/主题源文件
 ├── ventoy/src/                          # 自适应 Ventoy 源文件

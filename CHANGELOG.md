@@ -6,6 +6,9 @@ All notable changes to this project are documented here.
 
 ### Added
 
+- Added an optional responsive Plymouth line animation for the handoff from
+  GRUB to the graphical session.
+- Added reproducible Plymouth assets and a repository validation target.
 - Added equivalent English and Simplified Chinese installation guides.
 - Dedicated 2880x1800 Ventoy theme with a scrollable image library.
 - Unicode-capable menu font and class icons for common Ventoy image types.
