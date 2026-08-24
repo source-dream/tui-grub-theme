@@ -49,8 +49,7 @@ terminal-height: "100%"
   left = 1935
   top = 1205
   width = 793
-  height = 8
-  text = ""
+  height = 28
   text_color = "#8bd49c"
   fg_color = "#8bd49c"
   bg_color = "#1d2635"
