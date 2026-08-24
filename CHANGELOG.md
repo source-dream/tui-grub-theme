@@ -20,6 +20,8 @@ All notable changes to this project are documented here.
 
 - Reworked the Plymouth animation into a 36-frame one-shot sequence that holds
   its completed frame for a stable graphical-session handoff.
+- Extended the Plymouth frame cadence to span a typical graphical boot handoff
+  without adding an artificial startup wait.
 - Replaced the rectangular GRUB timeout indicator with a centered 12px rounded pixmap bar that accounts for GRUB's 28px minimum component height.
 - Replaced the GRUB and Ventoy previews with direct 2880x1800 QEMU framebuffer captures.
 - Renamed every deployable theme directory to `tui-grub-theme`.

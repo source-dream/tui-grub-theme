@@ -78,6 +78,9 @@ else
 frame.sprite = Sprite(frame.image);
 frame.sprite.SetPosition(frame.x, frame.y, 10);
 frame.tick = 0;
+# Six refreshes per image gives the 36-frame sequence about 4.3 seconds to
+# span the real boot handoff without delaying a faster boot.
+frame.ticks_per_image = 6;
 frame.current = 0;
 frame.done = 0;
 status_mode = "normal";
@@ -90,7 +93,7 @@ fun refresh_callback()
       return;
 
     frame.tick++;
-    index = Math.Int(frame.tick / 2);
+    index = Math.Int(frame.tick / frame.ticks_per_image);
     if (index > 35)
       index = 35;
     if (index != frame.current)
