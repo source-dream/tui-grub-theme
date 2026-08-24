@@ -1,10 +1,10 @@
 # TUI Boot Plymouth Theme
 
 This companion theme provides the animated handoff between the GRUB menu and
-the graphical session. A 72-frame sequence draws the Arch outline from its
-apex, transitions the cyan trace to a finished white outline, reveals
-`SourceDream's Linuxbook`, and then reverses. Plymouth never waits for the
-sequence to finish, so the theme does not add an artificial boot delay.
+the graphical session. A 36-frame one-shot sequence draws the Arch outline
+from its apex, transitions the cyan trace to a finished white outline, and
+reveals `SourceDream's Linuxbook`. The completed frame remains stable for the
+graphical-session handoff, without looping or adding an artificial boot delay.
 
 The layout is based on a 2880x1800 reference canvas and scales from the shorter
 screen dimension. Press `Esc` during boot to switch to detailed system output.
@@ -15,7 +15,7 @@ screen dimension. Press `Esc` during boot to switch to detailed system output.
 - `tui-boot/tui-boot.script`: responsive frame playback and prompt handling.
 - `tui-boot/frames/`: generated transparent PNG frames.
 - `src/frame-template.svg`: line-art design and text source.
-- `tools/build-assets.sh`: reproducibly renders all 72 PNG frames.
+- `tools/build-assets.sh`: reproducibly renders all 36 PNG frames.
 
 ## Build
 

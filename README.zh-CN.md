@@ -86,7 +86,8 @@ sudo cp /boot/grub/grub.cfg.bak-TIMESTAMP /boot/grub/grub.cfg
 ## 安装可选 Plymouth 主题
 
 Plymouth 在 GRUB 完成内核和 initramfs 加载后运行。配套主题按需加载紧凑的
-透明帧序列，逐步绘制 Arch 轮廓，并且不会等待动画循环结束。
+单次透明帧序列，逐步绘制 Arch 轮廓；绘制完成后稳定保持最终画面，不循环，
+也不会人为延长启动时间。
 
 以下步骤适用于使用 `mkinitcpio` 的 Arch Linux。编辑前先备份配置：
 

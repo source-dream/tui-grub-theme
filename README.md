@@ -89,8 +89,9 @@ Theme failure does not remove the firmware's other EFI boot entries.
 ## Install The Optional Plymouth Theme
 
 Plymouth runs after GRUB has loaded the kernel and initramfs. The companion
-theme plays a compact transparent-frame sequence that draws the Arch outline.
-Frames are loaded on demand, and Plymouth never waits for a cycle to finish.
+theme plays a compact one-shot transparent-frame sequence that draws the Arch
+outline. Frames are loaded on demand; after the drawing completes, the final
+frame remains stable without looping or delaying boot.
 
 The following setup is for Arch Linux with `mkinitcpio`. Back up the files
 before editing them:

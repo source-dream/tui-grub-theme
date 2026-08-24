@@ -1,4 +1,4 @@
-# Frame-based line-art animation. It never delays Plymouth shutdown.
+# One-shot line-art animation. The completed frame is held for handoff.
 
 Window.SetBackgroundTopColor(0.031, 0.039, 0.059);
 Window.SetBackgroundBottomColor(0.031, 0.039, 0.059);
@@ -56,53 +56,6 @@ frame.names[32] = "frames/frame-32.png";
 frame.names[33] = "frames/frame-33.png";
 frame.names[34] = "frames/frame-34.png";
 frame.names[35] = "frames/frame-35.png";
-frame.names[36] = "frames/frame-36.png";
-frame.names[37] = "frames/frame-37.png";
-frame.names[38] = "frames/frame-38.png";
-frame.names[39] = "frames/frame-39.png";
-frame.names[40] = "frames/frame-40.png";
-frame.names[41] = "frames/frame-41.png";
-frame.names[42] = "frames/frame-42.png";
-frame.names[43] = "frames/frame-43.png";
-frame.names[44] = "frames/frame-44.png";
-frame.names[45] = "frames/frame-45.png";
-frame.names[46] = "frames/frame-46.png";
-frame.names[47] = "frames/frame-47.png";
-frame.names[48] = "frames/frame-48.png";
-frame.names[49] = "frames/frame-49.png";
-frame.names[50] = "frames/frame-50.png";
-frame.names[51] = "frames/frame-51.png";
-frame.names[52] = "frames/frame-52.png";
-frame.names[53] = "frames/frame-53.png";
-frame.names[54] = "frames/frame-54.png";
-frame.names[55] = "frames/frame-55.png";
-frame.names[56] = "frames/frame-56.png";
-frame.names[57] = "frames/frame-57.png";
-frame.names[58] = "frames/frame-58.png";
-frame.names[59] = "frames/frame-59.png";
-frame.names[60] = "frames/frame-60.png";
-frame.names[61] = "frames/frame-61.png";
-frame.names[62] = "frames/frame-62.png";
-frame.names[63] = "frames/frame-63.png";
-frame.names[64] = "frames/frame-64.png";
-frame.names[65] = "frames/frame-65.png";
-frame.names[66] = "frames/frame-66.png";
-frame.names[67] = "frames/frame-67.png";
-frame.names[68] = "frames/frame-68.png";
-frame.names[69] = "frames/frame-69.png";
-frame.names[70] = "frames/frame-70.png";
-frame.names[71] = "frames/frame-71.png";
-
-frame.source = Image(frame.names[0]);
-if (frame.width == 900 && frame.height == 600)
-  frame.image = frame.source;
-else
-  frame.image = frame.source.Scale(frame.width, frame.height);
-frame.sprite = Sprite(frame.image);
-frame.sprite.SetPosition(frame.x, frame.y, 10);
-frame.tick = 0;
-frame.current = 0;
-status_mode = "normal";
 
 fun set_frame(index)
   {
@@ -114,27 +67,48 @@ fun set_frame(index)
     else
       frame.image = source.Scale(frame.width, frame.height);
     frame.sprite.SetImage(frame.image);
+    frame.current = index;
   }
+
+frame.source = Image(frame.names[0]);
+if (frame.width == 900 && frame.height == 600)
+  frame.image = frame.source;
+else
+  frame.image = frame.source.Scale(frame.width, frame.height);
+frame.sprite = Sprite(frame.image);
+frame.sprite.SetPosition(frame.x, frame.y, 10);
+frame.tick = 0;
+frame.current = 0;
+frame.done = 0;
+status_mode = "normal";
 
 fun refresh_callback()
   {
     local.index;
 
-    if (status_mode != "normal")
+    if (status_mode != "normal" || frame.done)
       return;
 
     frame.tick++;
-    index = Math.Int((frame.tick % 144) / 2);
+    index = Math.Int(frame.tick / 2);
+    if (index > 35)
+      index = 35;
     if (index != frame.current)
-      {
-        frame.current = index;
-        set_frame(index);
-      }
+      set_frame(index);
+    if (index == 35)
+      frame.done = 1;
+  }
+
+fun quit_callback()
+  {
+    if (frame.current != 35)
+      set_frame(35);
+    frame.sprite.SetOpacity(1);
   }
 
 Plymouth.SetRefreshFunction(refresh_callback);
+Plymouth.SetQuitFunction(quit_callback);
 
-# Keep prompts and boot messages usable on encrypted or recovery systems.
 dialog.sprite = Sprite();
 dialog.sprite.SetPosition(screen.x + Math.Int(72 * frame.scale), screen.y + screen.height - Math.Int(110 * frame.scale), 100);
 
