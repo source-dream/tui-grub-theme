@@ -4,7 +4,7 @@ set -eu
 repo_root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
 theme_dir="${repo_root}/plymouth/tui-boot"
 
-required_files='tui-boot.plymouth tui-boot.script line-dim.png line-cyan.png line-purple.png line-green.png dot.png title.png subtitle.png status.png'
+required_files='tui-boot.plymouth tui-boot.script'
 
 for file in ${required_files}; do
     test -s "${theme_dir}/${file}" || {
@@ -13,6 +13,17 @@ for file in ${required_files}; do
     }
 done
 
+test -s "${repo_root}/plymouth/src/frame-template.svg" || {
+    echo 'Missing Plymouth frame template.' >&2
+    exit 1
+}
+
+frame_count=$(find "${theme_dir}/frames" -maxdepth 1 -type f -name 'frame-*.png' | wc -l)
+test "${frame_count}" -eq 72 || {
+    echo "Expected 72 Plymouth frames, found ${frame_count}." >&2
+    exit 1
+}
+
 sh -n "${repo_root}/plymouth/tools/build-assets.sh"
 
 grep -q '^ModuleName=script$' "${theme_dir}/tui-boot.plymouth"
@@ -20,6 +31,7 @@ grep -q 'Plymouth.SetRefreshFunction' "${theme_dir}/tui-boot.script"
 grep -q 'Plymouth.SetDisplayPasswordFunction' "${theme_dir}/tui-boot.script"
 grep -q 'Window.GetWidth()' "${theme_dir}/tui-boot.script"
 grep -q 'Window.GetHeight()' "${theme_dir}/tui-boot.script"
+grep -q 'frames/frame-71.png' "${theme_dir}/tui-boot.script"
 
 if command -v shellcheck >/dev/null 2>&1; then
     shellcheck "${repo_root}/plymouth/tools/build-assets.sh"

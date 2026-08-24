@@ -89,8 +89,8 @@ Theme failure does not remove the firmware's other EFI boot entries.
 ## Install The Optional Plymouth Theme
 
 Plymouth runs after GRUB has loaded the kernel and initramfs. The companion
-theme uses scripted line transforms instead of video or full-screen frame
-sequences, and it never waits for an animation cycle to finish.
+theme plays a compact transparent-frame sequence that draws the Arch outline.
+Frames are loaded on demand, and Plymouth never waits for a cycle to finish.
 
 The following setup is for Arch Linux with `mkinitcpio`. Back up the files
 before editing them:
@@ -101,7 +101,7 @@ sudo cp /etc/default/grub /etc/default/grub.bak-TIMESTAMP
 sudo pacman -S --needed plymouth
 sudo cp /etc/plymouth/plymouthd.conf /etc/plymouth/plymouthd.conf.bak-TIMESTAMP
 sudo install -d /usr/share/plymouth/themes/tui-boot
-sudo cp plymouth/tui-boot/* /usr/share/plymouth/themes/tui-boot/
+sudo cp -a plymouth/tui-boot/. /usr/share/plymouth/themes/tui-boot/
 sudo plymouth-set-default-theme tui-boot
 ```
 

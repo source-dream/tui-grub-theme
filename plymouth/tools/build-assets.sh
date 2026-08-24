@@ -1,19 +1,54 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+export LC_ALL=C
+
 script_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
-theme_dir=$(cd -- "${script_dir}/../tui-boot" && pwd)
-font=$(fc-match -f '%{file}\n' 'JetBrains Mono:style=Medium' | head -n 1)
+plymouth_dir=$(cd -- "${script_dir}/.." && pwd)
+template="${plymouth_dir}/src/frame-template.svg"
+frames_dir="${plymouth_dir}/tui-boot/frames"
 
-magick -size 4x4 xc:'#536079' "${theme_dir}/line-dim.png"
-magick -size 4x4 xc:'#70c0e8' "${theme_dir}/line-cyan.png"
-magick -size 4x4 xc:'#c099ff' "${theme_dir}/line-purple.png"
-magick -size 4x4 xc:'#8bd49c' "${theme_dir}/line-green.png"
-magick -size 18x18 xc:none -fill '#8bd49c' -draw 'circle 9,9 9,3' "${theme_dir}/dot.png"
+command -v awk >/dev/null
+command -v rsvg-convert >/dev/null
 
-magick -background none -fill '#d9e0ee' -font "${font}" -pointsize 52 \
-  label:'ARCH // BOOT SEQUENCE' "${theme_dir}/title.png"
-magick -background none -fill '#748096' -font "${font}" -pointsize 23 \
-  label:'KERNEL HANDOFF  ·  EARLY KMS  ·  SYSTEMD' "${theme_dir}/subtitle.png"
-magick -background none -fill '#8bd49c' -font "${font}" -pointsize 20 \
-  label:'INITIALIZING USER SPACE' "${theme_dir}/status.png"
+mkdir -p "${frames_dir}"
+rm -f "${frames_dir}"/frame-*.png
+
+for index in $(seq 0 71); do
+  read -r draw_offset guide_offset base_opacity draw_opacity final_opacity title_opacity title_shift < <(
+    awk -v i="${index}" '
+      function clamp(v) { return v < 0 ? 0 : (v > 1 ? 1 : v) }
+      function ease(v) { v = clamp(v); return (1 - cos(v * 3.141592653589793)) / 2 }
+      BEGIN {
+        guide = ease(i / 14)
+        draw = ease((i - 5) / 39)
+        final = ease((i - 35) / 16)
+        title = ease((i - 34) / 14)
+        if (i >= 60) {
+          reverse = ease((i - 60) / 11)
+          guide *= 1 - reverse
+          draw *= 1 - reverse
+          final *= 1 - reverse
+          title *= 1 - reverse
+        }
+        printf "%.4f %.4f %.4f %.4f %.4f %.4f %.4f\n", \
+          994.0888 * (1 - draw), 206 * (1 - guide), 0.16 * draw, \
+          draw * (1 - final * 0.72), final, title, 8 * (1 - title)
+      }
+    '
+  )
+
+  frame=$(printf '%02d' "${index}")
+  sed \
+    -e "s/{{DRAW_OFFSET}}/${draw_offset}/g" \
+    -e "s/{{GUIDE_OFFSET}}/${guide_offset}/g" \
+    -e "s/{{BASE_OPACITY}}/${base_opacity}/g" \
+    -e "s/{{DRAW_OPACITY}}/${draw_opacity}/g" \
+    -e "s/{{FINAL_OPACITY}}/${final_opacity}/g" \
+    -e "s/{{TITLE_OPACITY}}/${title_opacity}/g" \
+    -e "s/{{TITLE_SHIFT}}/${title_shift}/g" \
+    "${template}" \
+    | rsvg-convert -w 900 -h 600 -o "${frames_dir}/frame-${frame}.png"
+done
+
+echo "Generated 72 Plymouth frames in ${frames_dir}."

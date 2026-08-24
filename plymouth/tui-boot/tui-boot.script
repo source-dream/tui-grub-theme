@@ -1,4 +1,4 @@
-# Lightweight TUI line animation. The refresh function never delays boot.
+# Frame-based line-art animation. It never delays Plymouth shutdown.
 
 Window.SetBackgroundTopColor(0.031, 0.039, 0.059);
 Window.SetBackgroundBottomColor(0.031, 0.039, 0.059);
@@ -8,232 +8,147 @@ screen.y = Window.GetY();
 screen.width = Window.GetWidth();
 screen.height = Window.GetHeight();
 
-scale = screen.width / 2880;
-height_scale = screen.height / 1800;
-if (height_scale < scale)
-  scale = height_scale;
-if (scale < 0.25)
-  scale = 0.25;
+frame.scale = screen.width / 2880;
+frame.height_scale = screen.height / 1800;
+if (frame.height_scale < frame.scale)
+  frame.scale = frame.height_scale;
+if (frame.scale < 0.25)
+  frame.scale = 0.25;
 
-frame.width = Math.Int(1040 * scale);
-frame.height = Math.Int(300 * scale);
-frame.line = Math.Int(3 * scale);
-if (frame.line < 1)
-  frame.line = 1;
+frame.width = Math.Int(900 * frame.scale);
+frame.height = Math.Int(600 * frame.scale);
 frame.x = screen.x + screen.width / 2 - frame.width / 2;
 frame.y = screen.y + screen.height / 2 - frame.height / 2;
 
-dim_source = Image("line-dim.png");
-cyan_source = Image("line-cyan.png");
-purple_source = Image("line-purple.png");
-green_source = Image("line-green.png");
+frame.names[0] = "frames/frame-00.png";
+frame.names[1] = "frames/frame-01.png";
+frame.names[2] = "frames/frame-02.png";
+frame.names[3] = "frames/frame-03.png";
+frame.names[4] = "frames/frame-04.png";
+frame.names[5] = "frames/frame-05.png";
+frame.names[6] = "frames/frame-06.png";
+frame.names[7] = "frames/frame-07.png";
+frame.names[8] = "frames/frame-08.png";
+frame.names[9] = "frames/frame-09.png";
+frame.names[10] = "frames/frame-10.png";
+frame.names[11] = "frames/frame-11.png";
+frame.names[12] = "frames/frame-12.png";
+frame.names[13] = "frames/frame-13.png";
+frame.names[14] = "frames/frame-14.png";
+frame.names[15] = "frames/frame-15.png";
+frame.names[16] = "frames/frame-16.png";
+frame.names[17] = "frames/frame-17.png";
+frame.names[18] = "frames/frame-18.png";
+frame.names[19] = "frames/frame-19.png";
+frame.names[20] = "frames/frame-20.png";
+frame.names[21] = "frames/frame-21.png";
+frame.names[22] = "frames/frame-22.png";
+frame.names[23] = "frames/frame-23.png";
+frame.names[24] = "frames/frame-24.png";
+frame.names[25] = "frames/frame-25.png";
+frame.names[26] = "frames/frame-26.png";
+frame.names[27] = "frames/frame-27.png";
+frame.names[28] = "frames/frame-28.png";
+frame.names[29] = "frames/frame-29.png";
+frame.names[30] = "frames/frame-30.png";
+frame.names[31] = "frames/frame-31.png";
+frame.names[32] = "frames/frame-32.png";
+frame.names[33] = "frames/frame-33.png";
+frame.names[34] = "frames/frame-34.png";
+frame.names[35] = "frames/frame-35.png";
+frame.names[36] = "frames/frame-36.png";
+frame.names[37] = "frames/frame-37.png";
+frame.names[38] = "frames/frame-38.png";
+frame.names[39] = "frames/frame-39.png";
+frame.names[40] = "frames/frame-40.png";
+frame.names[41] = "frames/frame-41.png";
+frame.names[42] = "frames/frame-42.png";
+frame.names[43] = "frames/frame-43.png";
+frame.names[44] = "frames/frame-44.png";
+frame.names[45] = "frames/frame-45.png";
+frame.names[46] = "frames/frame-46.png";
+frame.names[47] = "frames/frame-47.png";
+frame.names[48] = "frames/frame-48.png";
+frame.names[49] = "frames/frame-49.png";
+frame.names[50] = "frames/frame-50.png";
+frame.names[51] = "frames/frame-51.png";
+frame.names[52] = "frames/frame-52.png";
+frame.names[53] = "frames/frame-53.png";
+frame.names[54] = "frames/frame-54.png";
+frame.names[55] = "frames/frame-55.png";
+frame.names[56] = "frames/frame-56.png";
+frame.names[57] = "frames/frame-57.png";
+frame.names[58] = "frames/frame-58.png";
+frame.names[59] = "frames/frame-59.png";
+frame.names[60] = "frames/frame-60.png";
+frame.names[61] = "frames/frame-61.png";
+frame.names[62] = "frames/frame-62.png";
+frame.names[63] = "frames/frame-63.png";
+frame.names[64] = "frames/frame-64.png";
+frame.names[65] = "frames/frame-65.png";
+frame.names[66] = "frames/frame-66.png";
+frame.names[67] = "frames/frame-67.png";
+frame.names[68] = "frames/frame-68.png";
+frame.names[69] = "frames/frame-69.png";
+frame.names[70] = "frames/frame-70.png";
+frame.names[71] = "frames/frame-71.png";
 
-# A restrained guide frame stays behind the animated strokes.
-guide_top.image = dim_source.Scale(frame.width, frame.line);
-guide_top.sprite = Sprite(guide_top.image);
-guide_top.sprite.SetPosition(frame.x, frame.y, 1);
-guide_top.sprite.SetOpacity(0.28);
-
-guide_bottom.image = dim_source.Scale(frame.width, frame.line);
-guide_bottom.sprite = Sprite(guide_bottom.image);
-guide_bottom.sprite.SetPosition(frame.x, frame.y + frame.height, 1);
-guide_bottom.sprite.SetOpacity(0.28);
-
-guide_left.image = dim_source.Scale(frame.line, frame.height);
-guide_left.sprite = Sprite(guide_left.image);
-guide_left.sprite.SetPosition(frame.x, frame.y, 1);
-guide_left.sprite.SetOpacity(0.28);
-
-guide_right.image = dim_source.Scale(frame.line, frame.height);
-guide_right.sprite = Sprite(guide_right.image);
-guide_right.sprite.SetPosition(frame.x + frame.width, frame.y, 1);
-guide_right.sprite.SetOpacity(0.28);
-
-title.source = Image("title.png");
-title.image = title.source.Scale(Math.Int(title.source.GetWidth() * scale), Math.Int(title.source.GetHeight() * scale));
-title.sprite = Sprite(title.image);
-title.x = screen.x + screen.width / 2 - title.image.GetWidth() / 2;
-title.y = screen.y + screen.height / 2 - Math.Int(70 * scale);
-title.sprite.SetPosition(title.x, title.y, 10);
-title.sprite.SetOpacity(0);
-
-subtitle.source = Image("subtitle.png");
-subtitle.image = subtitle.source.Scale(Math.Int(subtitle.source.GetWidth() * scale), Math.Int(subtitle.source.GetHeight() * scale));
-subtitle.sprite = Sprite(subtitle.image);
-subtitle.x = screen.x + screen.width / 2 - subtitle.image.GetWidth() / 2;
-subtitle.y = screen.y + screen.height / 2 + Math.Int(20 * scale);
-subtitle.sprite.SetPosition(subtitle.x, subtitle.y, 10);
-subtitle.sprite.SetOpacity(0);
-
-status.source = Image("status.png");
-status.image = status.source.Scale(Math.Int(status.source.GetWidth() * scale), Math.Int(status.source.GetHeight() * scale));
-status.sprite = Sprite(status.image);
-status.x = screen.x + screen.width / 2 - status.image.GetWidth() / 2;
-status.y = frame.y + frame.height - Math.Int(66 * scale);
-status.sprite.SetPosition(status.x, status.y, 10);
-status.sprite.SetOpacity(0);
-
-dot.source = Image("dot.png");
-dot.image = dot.source.Scale(Math.Int(dot.source.GetWidth() * scale), Math.Int(dot.source.GetHeight() * scale));
-dot.sprite = Sprite(dot.image);
-dot.x = status.x - Math.Int(31 * scale);
-dot.y = status.y + status.image.GetHeight() / 2 - dot.image.GetHeight() / 2;
-dot.sprite.SetPosition(dot.x, dot.y, 11);
-dot.sprite.SetOpacity(0);
-
-top.sprite = Sprite();
-bottom.sprite = Sprite();
-left.sprite = Sprite();
-right.sprite = Sprite();
-scan.sprite = Sprite();
-
-top.width = 0;
-bottom.width = 0;
-left.height = 0;
-right.height = 0;
-
-tick = 0;
+frame.source = Image(frame.names[0]);
+if (frame.width == 900 && frame.height == 600)
+  frame.image = frame.source;
+else
+  frame.image = frame.source.Scale(frame.width, frame.height);
+frame.sprite = Sprite(frame.image);
+frame.sprite.SetPosition(frame.x, frame.y, 10);
+frame.tick = 0;
+frame.current = 0;
 status_mode = "normal";
 
-fun eased_progress(value)
+fun set_frame(index)
   {
-    local.result;
-    result = value / 36;
-    if (result < 0)
-      result = 0;
-    if (result > 1)
-      result = 1;
-    result = (1 - Math.Cos(result * 3.14159)) / 2;
-    return result;
-  }
+    local.source;
 
-fun stroke_progress(delay)
-  {
-    local.result;
-    if (tick < 104)
-      result = eased_progress(tick - delay);
+    source = Image(frame.names[index]);
+    if (frame.width == 900 && frame.height == 600)
+      frame.image = source;
     else
-      result = 1 - eased_progress(tick - 104 - delay);
-    return result;
+      frame.image = source.Scale(frame.width, frame.height);
+    frame.sprite.SetImage(frame.image);
   }
 
 fun refresh_callback()
   {
-    local.top_progress;
-    local.bottom_progress;
-    local.side_progress;
-    local.new_width;
-    local.new_height;
-    local.opacity;
-    local.scan_width;
-    local.scan_x;
+    local.index;
 
     if (status_mode != "normal")
       return;
 
-    tick++;
-    if (tick > 156)
-      tick = 0;
-
-    top_progress = stroke_progress(0);
-    bottom_progress = stroke_progress(8);
-    side_progress = stroke_progress(18);
-
-    new_width = Math.Int(frame.width * top_progress);
-    if (new_width != top.width)
+    frame.tick++;
+    index = Math.Int((frame.tick % 144) / 2);
+    if (index != frame.current)
       {
-        top.width = new_width;
-        if (top.width > 0)
-          {
-            top.image = cyan_source.Scale(top.width, frame.line);
-            top.sprite.SetImage(top.image);
-          }
+        frame.current = index;
+        set_frame(index);
       }
-    top.sprite.SetPosition(frame.x + frame.width / 2 - top.width / 2, frame.y, 4);
-    if (top.width > 0)
-      top.sprite.SetOpacity(0.95);
-    else
-      top.sprite.SetOpacity(0);
-
-    new_width = Math.Int(frame.width * bottom_progress);
-    if (new_width != bottom.width)
-      {
-        bottom.width = new_width;
-        if (bottom.width > 0)
-          {
-            bottom.image = purple_source.Scale(bottom.width, frame.line);
-            bottom.sprite.SetImage(bottom.image);
-          }
-      }
-    bottom.sprite.SetPosition(frame.x + frame.width / 2 - bottom.width / 2, frame.y + frame.height, 4);
-    if (bottom.width > 0)
-      bottom.sprite.SetOpacity(0.72);
-    else
-      bottom.sprite.SetOpacity(0);
-
-    new_height = Math.Int(frame.height * side_progress);
-    if (new_height != left.height)
-      {
-        left.height = new_height;
-        right.height = new_height;
-        if (left.height > 0)
-          {
-            left.image = cyan_source.Scale(frame.line, left.height);
-            left.sprite.SetImage(left.image);
-            right.image = purple_source.Scale(frame.line, right.height);
-            right.sprite.SetImage(right.image);
-          }
-      }
-    left.sprite.SetPosition(frame.x, frame.y + frame.height / 2 - left.height / 2, 4);
-    right.sprite.SetPosition(frame.x + frame.width, frame.y + frame.height / 2 - right.height / 2, 4);
-    if (left.height > 0)
-      {
-        left.sprite.SetOpacity(0.78);
-        right.sprite.SetOpacity(0.62);
-      }
-    else
-      {
-        left.sprite.SetOpacity(0);
-        right.sprite.SetOpacity(0);
-      }
-
-    opacity = eased_progress(tick - 22);
-    if (tick > 126)
-      opacity = 1 - eased_progress(tick - 126);
-    title.sprite.SetOpacity(opacity);
-    subtitle.sprite.SetOpacity(opacity * 0.76);
-    status.sprite.SetOpacity(opacity * 0.72);
-    dot.sprite.SetOpacity(opacity * (0.58 + 0.42 * Math.Sin(tick * 0.16) * Math.Sin(tick * 0.16)));
-
-    scan_width = Math.Int(120 * scale);
-    if (scan_width < 12)
-      scan_width = 12;
-    if (!scan.image)
-      {
-        scan.image = green_source.Scale(scan_width, frame.line);
-        scan.sprite.SetImage(scan.image);
-      }
-    scan_x = frame.x + Math.Int((frame.width - scan_width) * ((tick % 104) / 103));
-    scan.sprite.SetPosition(scan_x, frame.y + frame.height, 5);
-    scan.sprite.SetOpacity(opacity * 0.88);
   }
 
 Plymouth.SetRefreshFunction(refresh_callback);
 
-# Preserve boot-time prompts and messages even though this host currently
-# has no encrypted-root password prompt.
+# Keep prompts and boot messages usable on encrypted or recovery systems.
 dialog.sprite = Sprite();
-dialog.sprite.SetPosition(screen.x + Math.Int(72 * scale), screen.y + screen.height - Math.Int(110 * scale), 100);
+dialog.sprite.SetPosition(screen.x + Math.Int(72 * frame.scale), screen.y + screen.height - Math.Int(110 * frame.scale), 100);
 
 fun display_normal_callback()
   {
     global.status_mode = "normal";
+    frame.sprite.SetOpacity(1);
     dialog.sprite.SetOpacity(0);
   }
 
 fun display_password_callback(prompt, bullets)
   {
     global.status_mode = "password";
+    frame.sprite.SetOpacity(0.22);
     dialog.image = Image.Text(prompt, 0.851, 0.878, 0.933);
     dialog.sprite.SetImage(dialog.image);
     dialog.sprite.SetOpacity(1);
@@ -242,6 +157,7 @@ fun display_password_callback(prompt, bullets)
 fun display_question_callback(prompt, entry_text)
   {
     global.status_mode = "question";
+    frame.sprite.SetOpacity(0.22);
     dialog.image = Image.Text(prompt, 0.851, 0.878, 0.933);
     dialog.sprite.SetImage(dialog.image);
     dialog.sprite.SetOpacity(1);
